@@ -4,7 +4,7 @@ import sys
 import time
 
 
-os.system("python ~/Desktop/fuzz.py")
+os.system("python ./fuzz.py")
 
 
 os.system("sudo lcov --capture --output-file {}/kernel.info".format(sys.argv[1]))

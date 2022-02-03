@@ -1,4 +1,12 @@
 #Author: Tristan Brigham (TristanB22) 
+
+''' To Run:
+
+1) Run a command that requires sudo
+2) In the same bash prompt, once that command is done, run this
+
+'''
+
 import os
 import time
 
