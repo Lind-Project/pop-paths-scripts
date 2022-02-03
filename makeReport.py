@@ -1,4 +1,5 @@
 #Author: Tristan Brigham (TristanB22) 
+# to reset gcov values: "echo 0>/proc/gcov/vmlinux
 import os
 import sys
 import time
