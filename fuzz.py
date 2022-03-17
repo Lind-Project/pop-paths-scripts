@@ -11,7 +11,7 @@
 import os
 import time
 
-script='#!/usr/bin/perl\n use strict;\n use warnings;\n use Filesys::DiskSpace; \n my $dir = "/home";\n my ($fs_type, $fs_desc, $used, $avail, $fused, $favail) = df $dir;\n my $df_free = (($avail) / ($avail+$used)) * 100.0; \n my $out = sprintf("Disk space on $dir == %0.2f\n",$df_free);\n print $out;'
+script='#!/usr/bin/perl\n use strict;\n use warnings;\n use Filesys::DiskSpace; \n my $dir = "/home";\n my ($fs_type, $fs_desc, $used, $avail, $fused, $favail) = df $dir;\n my $df_free = (($avail) / ($avail+$used)) * 100.0; \n my $out = sprintf("Disk space on $dir == %0.2f" \n,$df_free);\n print $out;'
 script2='#include<iostream>\n #include<math.h>\n using namespace std;\n int main(){\n float number, root;\n cout << "Enter number whose root is to be found: ";\n cin >> number;\n root = sqrt(number);\n cout << "Square root of " << number << " is " << root;\n return 0;\n }'
 
 commands = [
