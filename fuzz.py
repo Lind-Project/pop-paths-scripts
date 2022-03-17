@@ -2,8 +2,9 @@
 
 ''' To Run:
 
-1) Run a command that requires sudo
+1) Run a command that uses sudo (try "sudo ls")
 2) In the same bash prompt, once that command is done, run this
+    This ensures that the commands in this script has root privileges without you needing to input the password again
 
 '''
 
@@ -15,6 +16,7 @@ script2='#include<iostream>\n #include<math.h>\n using namespace std;\n int main
 
 commands = [
     "sudo systemctl start ssh",
+    "sudo systemctl stop ssh",
     "bzip2 -zfk -vv --best test_file.txt",
     "bzip2 -t -vv --best test_file.txt.bz2",
     "bzip2 -df -vv --fast test_file.txt.bz2",
@@ -157,15 +159,21 @@ commands = [
     "setenforce Permissive",
     "logsave -asv ./temp_log ls",
     "logsave -asv ./temp_log pwd",
+    "ping google.com -c 10",
+    "ping 8.8.8.8 -c 10",
+    "curl google.com",
+    "curl -X POST 'google.com'",
+    "wget http://localhost:8080/index.html",
+    "nc -G 5 -z 125.0.0.1 20-80",
+    "nc -G 5 -z 8.8.8.8 80",
+    "netstat -rlv",
 
 
-
-    #"watch ls",
-    #"watch ps -aux",
     #"watch 'sudo systemctl start ssh'",
     #"watch 'sudo systemctl stop ssh'"
 ]
 
+# watch ls command
 # do a man command
 # make menuconfig to do the ncurses thing
 # sudo login lind2 -- need to run independently
