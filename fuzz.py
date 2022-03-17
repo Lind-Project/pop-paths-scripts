@@ -167,10 +167,6 @@ commands = [
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
     "netstat -rlv",
-
-
-    #"watch 'sudo systemctl start ssh'",
-    #"watch 'sudo systemctl stop ssh'"
 ]
 
 # watch ls command
