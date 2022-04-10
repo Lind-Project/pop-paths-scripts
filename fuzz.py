@@ -8,6 +8,13 @@
 
 '''
 
+selinux_install=[
+    "sudo /etc/init.d/apparmor stop",
+    "sudo apt install selinux policycoreutils selinux-utils selinux-basics",
+    "setenforce Permissive",
+    "sudo selinux-activate",
+]
+
 import os
 import time
 
@@ -152,11 +159,12 @@ commands = [
     "echo {} > script.c".format(script2),
     "gcc script.c -o script",
     "./script",
-    "sudo apt install policycoreutils",
     "sestatus",
-    "dnf install selinux-policy-mls",
+    "grep selinux /var/log/audit/audit.log",
+    "sudo selinux-config-enforcing",
     "SELINUXTYPE=mls",
-    "setenforce Permissive",
+    "sudo setenforce 0",
+    "sudo setenforce 1",
     "logsave -asv ./temp_log ls",
     "logsave -asv ./temp_log pwd",
     "ping google.com -c 10",
