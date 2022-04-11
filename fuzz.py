@@ -7,12 +7,17 @@
     This ensures that the commands in this script has root privileges without you needing to input the password again
 
 '''
+apparmor_stop=[
+    "sudo systemctl stop apparmor",
+    "sudo apt-get remove apparmor -y",
+    "sudo reboot now",
+]
 
 selinux_install=[
-    "sudo /etc/init.d/apparmor stop",
-    "sudo apt install selinux policycoreutils selinux-utils selinux-basics",
-    "setenforce Permissive",
+    "sudo apt install policycoreutils selinux-utils selinux-basics",
     "sudo selinux-activate",
+    "sudo selinux-config-enforcing"
+    "sudo reboot now",
 ]
 
 import os
@@ -185,6 +190,9 @@ commands = [
 #   gpg --gen-key
 #   gpg --encrypt --recipient 'Your Name' foo.txt
 #   gpg --output foo.txt --decrypt foo.txt.gpg
+
+if input("Would you like to run selinux install commands (Y/N)") == "Y":
+    commands = selinux_install
 
 for command in commands:
     print(command + "\n\n\n")
