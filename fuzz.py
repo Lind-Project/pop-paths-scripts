@@ -226,6 +226,15 @@ commands = [
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
     "netstat -rlv",
+    "curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
+    "./editline/configure",
+    "cd ./editline",
+    "make",
+    "sudo make install",
+    "cd ..",
+    "~/editline/examples/fileman", # testing libedit -- THESE AREN'T AUTOMATED
+    "~/editline/examples/tc1",
+    "~/editline/examples/wtc1",
 ]
 
 #need to do a failed login and su for libpam-runtime and util-linux and login
