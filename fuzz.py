@@ -64,9 +64,6 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    #need to do a failed login and su for libpam-runtime and util-linux and login
-    #do a script command for util-linux and bsdutils
-    # do a command that goes gpgv
     "dir ~/Desktop",
     "cp ./test_file.txt ./test2.txt",
     "mkdir ./temp_dir", 
@@ -95,7 +92,7 @@ commands = [
     "bash -i 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
-    "tar -zcvf ~/Desktop/tarred_information.tar.gz ~/Desktop/fuzzing" #using tar gz to test zlib1g and tar and gz
+    "tar -zcvf ~/Desktop/tarred_information.tar.gz ~/Desktop/fuzzing", #using tar gz to test zlib1g and tar and gz
     "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ~/Desktop/info.txt", #testing lsb-base
     "sed 's/linux/unix' ~/Desktop/info.txt", #testing sed
     "sed 's/hello/aloha/2' ~/Desktop/info.txt",
@@ -154,14 +151,18 @@ commands = [
     "cd ~/Desktop/gpgTest",
     "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
-    "gpg --show-keys VeraCrypt_PGP_public_key.asc" #testing libgpg-error0
+    "gpg --show-keys VeraCrypt_PGP_public_key.asc", #testing libgpg-error0
     "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
     "gpg --import VeraCrypt_PGP_public_key.asc",
     "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
+    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
+    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv
     "echo 'test' > ~/Desktop/gpg_test.txt",
-    "gpg --encrypt file.txt"
-    "gpg --dencrypt file.txt.gpg"
-    "cat /etc/profile" #testing base-files
+    "gpg --encrypt file.txt",
+    "gpg --dencrypt file.txt.gpg",
+    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
+    "./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
+    "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
     "tail -3 /var/log/syslog",
@@ -227,8 +228,9 @@ commands = [
     "netstat -rlv",
 ]
 
-# ucf command needed
-# e2fsprogs commands needed
+#need to do a failed login and su for libpam-runtime and util-linux and login
+# do a script command for util-linux and bsdutils
+# do a command that does gpgv
 # watch ls command to test procps
 # do a man command
 # run make menuconfig on the kernel file to get ncurses to hit
@@ -236,6 +238,7 @@ commands = [
 # make menuconfig to do the ncurses thing... I just need to get that file window up
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
+# sudo login wrong_user
 # Also need to gpg gen key, encrypt, decrypt
 #   gpg --gen-key
 #   gpg --encrypt --recipient 'Your Name' foo.txt
