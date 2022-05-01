@@ -253,13 +253,9 @@ commands = [
 #   gpg --output foo.txt --decrypt foo.txt.gpg
 
 
-
-# if input("Would you like to run selinux install commands (Y/N)") == "Y":
-#     commands = selinux_install
-
 count=0
 try:
-    count = sys.argv[1]
+    count = int(sys.argv[1])
 except:
     pass
 
