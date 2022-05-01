@@ -24,12 +24,13 @@ import os
 import time
 
 mount_file_name="./mnt_file"
+bash_script_file=os.getcwd()+"/bash_script.sh"
+perl_script_file=os.getcwd()+"/perl_script"
+script2=os.getcwd()+"/cscript2.cpp"
+c_command_line_args=os.getcwd()+"/cscript.c"
+print(os.getcwd())
 
-perl_script='#!/usr/bin/perl\n use strict;\n use warnings;\n use Filesys::DiskSpace; \n my $dir = "/home";\n my ($fs_type, $fs_desc, $used, $avail, $fused, $favail) = df $dir;\n my $df_free = (($avail) / ($avail+$used)) * 100.0; \n my $out = sprintf("Disk space on $dir == %0.2f" \n,$df_free);\n print $out;'
-script2='#include<iostream>\n #include<math.h>\n using namespace std;\n int main(){\n float number, root;\n cout << "Enter number whose root is to be found: ";\n cin >> number;\n root = sqrt(number);\n cout << "Square root of " << number << " is " << root;\n return 0;\n }'
-bash_script='echo “Wait for 5 seconds” \n sleep 5 \n echo “Completed”'
-python_mount_script="f=open('{}', 'r')\nline=f.readlines()[0]\nprint(line[:line.index(':')])".format(mount_file_name)
-c_command_line_args='#include <stdio.h> \n void main(int argc, char *argv[] )  {  \n printf("Program name is: %s\n", argv[0]);  \n if(argc < 2){  \n printf("No argument passed through command line.\n");  \n }  \n else{  \n printf("First argument is: %s\n", argv[1]);  \n }  '
+python_mount_script="f=open('{}', 'r') \n line=f.readlines()[0] \n print(line[:line.index(':')])".format(mount_file_name)
 function_slang="\n define f_of_z (z) \n { \n z + z^2/sin(z^4-1); \n } \n define set_options (prefs) \n { \n prefs.xgrid = [-1.5:1.5:#384]; \n prefs.ygrid = [-1.5:1.5:#384]; \n prefs.iter = 3; \n }"
 
 # just using the command line hits libss2 and readline-common
@@ -105,12 +106,10 @@ commands = [
     "time cat ~/Desktop/info.txt",
     "time ls",
     "time pwd",
-    "echo '{}' > bash_script.sh".format(bash_script), #testing bash
-    "chmod +xrw bash_script.sh",
-    "bash bash_script.sh",
-    "echo '{}' > script.pl".format(perl_script), #testing perl-base
-    "chmod +x script.pl",
-    "./script.pl",
+    "chmod +xrw {}".format(bash_script_file), #testing bash
+    "bash {}".format(bash_script_file),
+    "chmod +x {}".format(perl_script_file),#testing perl-base
+    "./{}".format(perl_script_file),
     "echo 'Welcome To Lind' | sed 's/\([A-Z]\)/\(\1\)/g'",
     "printenv",
     "pwd",
@@ -211,8 +210,7 @@ commands = [
     "find / test.txt", #testing find
     "sudo apt install mlocate", #testing debconf
     "locate test.txt", #testing find
-    "echo '{}' > script.c".format(script2), #testing libstdc++6 and libc6
-    "gcc script.c -o script", #testing libstdc++6 and libc6
+    "gcc {} -o script".format(script2), #testing libstdc++6 and libc6
     "./script", #testing libstdc++6 and libc6
     "sestatus",
     "grep selinux /var/log/audit/audit.log", #testing grep and libsepol1
