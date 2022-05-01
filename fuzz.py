@@ -258,8 +258,10 @@ commands = [
 #     commands = selinux_install
 
 count=0
-if sys.argv[1]:
+try:
     count = sys.argv[1]
+except:
+    pass
 
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n" + command + "\n\n\n".format(i))
