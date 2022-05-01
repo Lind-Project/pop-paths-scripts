@@ -36,6 +36,7 @@ print(os.getcwd())
 
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
+    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
@@ -160,8 +161,6 @@ commands = [
     "echo 'test' > ~/Desktop/gpg_test.txt",
     "gpg --encrypt file.txt",
     "gpg --dencrypt file.txt.gpg",
-    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
-    "./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
