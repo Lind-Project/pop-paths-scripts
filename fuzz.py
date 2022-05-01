@@ -22,6 +22,7 @@ selinux_install=[ #the commands for installing and starting selinux
 
 import os
 import time
+import sys
 
 mount_file_name="./pop-paths-scripts/mnt_file"
 bash_script_file=os.getcwd()+"/pop-paths-scripts/bash_script.sh"
@@ -35,6 +36,9 @@ print(os.getcwd())
 # just using the command line hits libss2 and readline-common
 
 commands = [
+    "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
+    "sudo passwd lind2", #testing passwd and lsb-base
+    "sudo userdel lind2",
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
     "chmod +x fztopng",
@@ -64,9 +68,6 @@ commands = [
     "echo 'this is a tempfile' > ~/Desktop/tempFile.txt",
     "wall ~/Desktop/tempFile.txt", #testing bsdutils
     "vim -c 'q' ~/Desktop/tempFile.txt",
-    "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
-    "sudo passwd lind2", #testing passwd and lsb-base
-    "sudo userdel lind2",
     "dir ~/Desktop",
     "cp ./test_file.txt ./test2.txt",
     "mkdir ./temp_dir", 
@@ -256,7 +257,11 @@ commands = [
 # if input("Would you like to run selinux install commands (Y/N)") == "Y":
 #     commands = selinux_install
 
-for command in commands:
-    print("\n\n\nCOMMAND::\n" + command + "\n\n\n")
+count=0
+if sys.argv[1]:
+    count = sys.argv[1]
+
+for i, command in enumerate(commands[count:]):
+    print("\n\n\nCOMMAND {}::\n" + command + "\n\n\n".format(i))
     os.system(command)
     time.sleep(2)
