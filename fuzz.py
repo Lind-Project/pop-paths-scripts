@@ -111,7 +111,7 @@ commands = [
     "echo '{}' > script.pl".format(perl_script), #testing perl-base
     "chmod +x script.pl",
     "./script.pl",
-    "echo 'Welcome To The Lind Zone' | sed 's/\([A-Z]\)/\(\1\)/g'",
+    "echo 'Welcome To Lind' | sed 's/\([A-Z]\)/\(\1\)/g'",
     "printenv",
     "pwd",
     "ls",
