@@ -30,24 +30,28 @@ script2='#include<iostream>\n #include<math.h>\n using namespace std;\n int main
 bash_script='#!/bin/bash\necho “Wait for 5 seconds”\nsleep 5\necho “Completed”'
 python_mount_script="f=open('{}', 'r')\nline=f.readlines()[0]\nprint(line[:line.index(':')])".format(mount_file_name)
 c_command_line_args='#include <stdio.h> \n void main(int argc, char *argv[] )  {  \n printf("Program name is: %s\n", argv[0]);  \n if(argc < 2){  \n printf("No argument passed through command line.\n");  \n }  \n else{  \n printf("First argument is: %s\n", argv[1]);  \n }  '
+function_slang="\n define f_of_z (z) \n { \n z + z^2/sin(z^4-1); \n } \n define set_options (prefs) \n { \n prefs.xgrid = [-1.5:1.5:#384]; \n prefs.ygrid = [-1.5:1.5:#384]; \n prefs.iter = 3; \n }"
 
 # just using the command line hits libss2 and readline-common
 
 commands = [
-    "sudo apt-get install -y libconfig-dev libedit-dev",
+    "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
+    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
+    "echo '{}' > ./func.sl".format(function_slang),
+    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f func.sl",
     "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
     "grep '^GNU' GPL-3",
     "grep '^[A-Z]' GPL-3",
     "grep '([A-Za-z ]*)' GPL-3",
     "grep -E '(GPL|General Public License)' GPL-3",
     "grep -E '[[:alpha:]]{16,20}' GPL-3",
-    "echo {} > c.c".format(c_command_line_args), #testing libpopt0 (command line arguments)
+    "echo '{}' > c.c".format(c_command_line_args), #testing libpopt0 (command line arguments)
     "gcc -o ./ex c.c",
     "./ex 'hello'",
-    "echo {} > p.py".format(python_mount_script), #testing mount for the next several lines
+    "echo '{}' > p.py".format(python_mount_script), #testing mount for the next several lines
     "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10",
     "sudo losetup -f loopbackfile.img",
-    "sudo losetup -a | grep 'loopbackfile.img' > {}".format(mount_file_name),
+    "sudo losetup -a | grep 'loopbackfile.img' > '{}'".format(mount_file_name),
     "sudo mkfs.ext4 $(python p.py)",
     "sudo mkdir /media/loop100",
     "sudo mount $(python p.py) /media/loop100",
@@ -101,10 +105,10 @@ commands = [
     "time cat ~/Desktop/info.txt",
     "time ls",
     "time pwd",
-    "echo {} > bash_script.sh".format(bash_script), #testing bash
+    "echo '{}' > bash_script.sh".format(bash_script), #testing bash
     "chmod +xrw bash_script.sh",
     "bash bash_script.sh",
-    'echo {} > script.pl'.format(perl_script), #testing perl-base
+    "echo '{}' > script.pl".format(perl_script), #testing perl-base
     "chmod +x script.pl",
     "./script.pl",
     "echo 'Welcome To The Lind Zone' | sed 's/\([A-Z]\)/\(\1\)/g'",
@@ -207,7 +211,7 @@ commands = [
     "find / test.txt", #testing find
     "sudo apt install mlocate", #testing debconf
     "locate test.txt", #testing find
-    "echo {} > script.c".format(script2), #testing libstdc++6 and libc6
+    "echo '{}' > script.c".format(script2), #testing libstdc++6 and libc6
     "gcc script.c -o script", #testing libstdc++6 and libc6
     "./script", #testing libstdc++6 and libc6
     "sestatus",
