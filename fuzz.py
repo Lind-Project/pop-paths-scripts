@@ -39,7 +39,7 @@ commands = [
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
     "chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
-    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f {}".format(function_slang),
+    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
     "grep '^GNU' GPL-3",
     "grep '^[A-Z]' GPL-3",
