@@ -264,6 +264,6 @@ except:
     pass
 
 for i, command in enumerate(commands[count:]):
-    print("\n\n\nCOMMAND {}::\n" + command + "\n\n\n".format(i))
+    print("\n\n\nCOMMAND {}::\n".format(i) + command + "\n\n\n")
     os.system(command)
     time.sleep(2)
