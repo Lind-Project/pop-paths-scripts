@@ -23,13 +23,13 @@ selinux_install=[ #the commands for installing and starting selinux
 import os
 import time
 
-mount_file_name="./mnt_file"
-bash_script_file=os.getcwd()+"/bash_script.sh"
-perl_script_file=os.getcwd()+"/perl_script"
-script2=os.getcwd()+"/cscript2.cpp"
-c_command_line_args=os.getcwd()+"/cscript.c"
-function_slang=os.getcwd()+"/slang"
-python_mount_script=os.getcwd()+"/mount.py {}".format(mount_file_name)
+mount_file_name="./pop-paths-scripts/mnt_file"
+bash_script_file=os.getcwd()+"/pop-paths-scripts/bash_script.sh"
+perl_script_file=os.getcwd()+"/pop-paths-scripts/perl_script"
+script2=os.getcwd()+"/pop-paths-scripts/cscript2.cpp"
+c_command_line_args=os.getcwd()+"/pop-paths-scripts/cscript.c"
+function_slang=os.getcwd()+"/pop-paths-scripts/slang"
+python_mount_script=os.getcwd()+"/pop-paths-scripts/mount.py {}".format(mount_file_name)
 print(os.getcwd())
 
 # just using the command line hits libss2 and readline-common
