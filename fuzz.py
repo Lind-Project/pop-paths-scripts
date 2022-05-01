@@ -28,18 +28,16 @@ bash_script_file=os.getcwd()+"/bash_script.sh"
 perl_script_file=os.getcwd()+"/perl_script"
 script2=os.getcwd()+"/cscript2.cpp"
 c_command_line_args=os.getcwd()+"/cscript.c"
+function_slang=os.getcwd()+"/slang"
+python_mount_script=os.getcwd()+"/mount.py {}".format(mount_file_name)
 print(os.getcwd())
-
-python_mount_script="f=open('{}', 'r') \n line=f.readlines()[0] \n print(line[:line.index(':')])".format(mount_file_name)
-function_slang="\n define f_of_z (z) \n { \n z + z^2/sin(z^4-1); \n } \n define set_options (prefs) \n { \n prefs.xgrid = [-1.5:1.5:#384]; \n prefs.ygrid = [-1.5:1.5:#384]; \n prefs.iter = 3; \n }"
 
 # just using the command line hits libss2 and readline-common
 
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
-    "echo '{}' > ./func.sl".format(function_slang),
-    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f func.sl",
+    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
     "grep '^GNU' GPL-3",
     "grep '^[A-Z]' GPL-3",
@@ -49,15 +47,14 @@ commands = [
     "echo '{}' > c.c".format(c_command_line_args), #testing libpopt0 (command line arguments)
     "gcc -o ./ex c.c",
     "./ex 'hello'",
-    "echo '{}' > p.py".format(python_mount_script), #testing mount for the next several lines
-    "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10",
+    "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10", #testing mount for the next several lines
     "sudo losetup -f loopbackfile.img",
     "sudo losetup -a | grep 'loopbackfile.img' > '{}'".format(mount_file_name),
-    "sudo mkfs.ext4 $(python p.py)",
+    "sudo mkfs.ext4 $(python {})".format(python_mount_script),
     "sudo mkdir /media/loop100",
-    "sudo mount $(python p.py) /media/loop100",
+    "sudo mount $(python {}) /media/loop100".format(python_mount_script),
     "sudo umount /media/loop100",
-    "losetup -d $(python p.py)",
+    "losetup -d $(python {})".format(python_mount_script),
     "rm loopbackfile.img",
     "bzip2 -zfk -vv --best test_file.txt", #zipping files to test libbz2-1.0
     "bzip2 -t -vv --best test_file.txt.bz2",
@@ -262,5 +259,5 @@ commands = [
 
 for command in commands:
     print(command + "\n\n\n")
-    time.sleep(5)
+    time.sleep(2)
     os.system(command)
