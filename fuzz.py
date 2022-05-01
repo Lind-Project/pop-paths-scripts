@@ -37,6 +37,7 @@ print(os.getcwd())
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
+    "chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
