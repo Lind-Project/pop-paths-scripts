@@ -46,8 +46,7 @@ commands = [
     "grep '([A-Za-z ]*)' GPL-3",
     "grep -E '(GPL|General Public License)' GPL-3",
     "grep -E '[[:alpha:]]{16,20}' GPL-3",
-    "echo '{}' > c.c".format(c_command_line_args), #testing libpopt0 (command line arguments)
-    "gcc -o ./ex c.c",
+    "gcc -o ./ex {}".format(c_command_line_args), #testing libpopt0 (command line arguments)
     "./ex 'hello'",
     "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10", #testing mount for the next several lines
     "sudo losetup -f loopbackfile.img",
