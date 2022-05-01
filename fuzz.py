@@ -159,9 +159,6 @@ commands = [
     "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
     "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv
-    "echo 'test' > ~/Desktop/gpg_test.txt",
-    "gpg --encrypt file.txt",
-    "gpg --dencrypt file.txt.gpg",
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
@@ -234,6 +231,9 @@ commands = [
     "~/editline/examples/fileman", # testing libedit -- THESE AREN'T AUTOMATED
     "~/editline/examples/tc1",
     "~/editline/examples/wtc1",
+    "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
+    "gpg --encrypt ~/Desktop/gpg_test.txt",
+    "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
 ]
 
 #need to do a failed login and su for libpam-runtime and util-linux and login
