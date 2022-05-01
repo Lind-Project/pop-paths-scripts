@@ -259,5 +259,5 @@ commands = [
 
 for command in commands:
     print("\n\n\nCOMMAND::\n" + command + "\n\n\n")
-    time.sleep(2)
     os.system(command)
+    time.sleep(2)
