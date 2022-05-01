@@ -36,10 +36,34 @@ print(os.getcwd())
 # just using the command line hits libss2 and readline-common
 
 commands = [
+    "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh", 
+    "rmdir -ry ~/Desktop/gpgTest",
+    "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
+    "cd ~/Desktop/gpgTest",
+    "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
+    "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
+    "gpg --show-keys VeraCrypt_PGP_public_key.asc", #testing libgpg-error0
+    "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
+    "gpg --import VeraCrypt_PGP_public_key.asc",
+    "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
+    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
+    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv 
+    "curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
+    "./editline/configure",
+    "cd ./editline",
+    "make",
+    "sudo make install",
+    "cd ..",
+    "~/editline/examples/fileman", # testing libedit -- THESE AREN'T AUTOMATED
+    "~/editline/examples/tc1",
+    "~/editline/examples/wtc1",
+    "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
+    "gpg --encrypt ~/Desktop/gpg_test.txt",
+    "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
+
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
     "chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
@@ -148,17 +172,7 @@ commands = [
     "whoami",
     "sudo whoami",
     "rm ~/Desktop/tempFile.txt",
-    "rmdir -ry ~/Desktop/gpgTest",
-    "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
-    "cd ~/Desktop/gpgTest",
-    "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
-    "gpg --show-keys VeraCrypt_PGP_public_key.asc", #testing libgpg-error0
-    "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
-    "gpg --import VeraCrypt_PGP_public_key.asc",
-    "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
-    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv
+    
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
@@ -222,18 +236,7 @@ commands = [
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
     "netstat -rlv",
-    "curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
-    "./editline/configure",
-    "cd ./editline",
-    "make",
-    "sudo make install",
-    "cd ..",
-    "~/editline/examples/fileman", # testing libedit -- THESE AREN'T AUTOMATED
-    "~/editline/examples/tc1",
-    "~/editline/examples/wtc1",
-    "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
-    "gpg --encrypt ~/Desktop/gpg_test.txt",
-    "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
+    
 ]
 
 #need to do a failed login and su for libpam-runtime and util-linux and login
