@@ -258,6 +258,6 @@ commands = [
 #     commands = selinux_install
 
 for command in commands:
-    print(command + "\n\n\n")
+    print("COMMAND::::" + command + "\n\n\n")
     time.sleep(2)
     os.system(command)
