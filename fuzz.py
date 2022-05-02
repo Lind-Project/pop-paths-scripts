@@ -265,4 +265,4 @@ except:
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i) + command + "\n\n\n")
     os.system(command)
-    time.sleep(2)
+    time.sleep(.3)
