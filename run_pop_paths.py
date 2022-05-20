@@ -1,4 +1,4 @@
-#Author: Tristan Brigham (TristanB22) 
+# Author: Tristan Brigham (TristanB22) 
 
 ''' To Run:
 
@@ -24,13 +24,14 @@ import os
 import time
 import sys
 
-mount_file_name="./pop-paths-scripts/mnt_file"
-bash_script_file=os.getcwd()+"/pop-paths-scripts/bash_script.sh"
-perl_script_file=os.getcwd()+"/pop-paths-scripts/perl_script"
-script2=os.getcwd()+"/pop-paths-scripts/cscript2.cpp"
-c_command_line_args=os.getcwd()+"/pop-paths-scripts/cscript.c"
-function_slang=os.getcwd()+"/pop-paths-scripts/slang"
-python_mount_script=os.getcwd()+"/pop-paths-scripts/mount.py {}".format(mount_file_name)
+mount_file_name="./pop-paths-scripts/mnt_file" 
+
+bash_script_file=os.getcwd()+"/pop-paths-scripts/scripts/bash_script.sh"
+perl_script_file=os.getcwd()+"/pop-paths-scripts/scripts/perl_script"
+script2=os.getcwd()+"/pop-paths-scripts/scripts/cscript2.cpp"
+c_command_line_args=os.getcwd()+"/pop-paths-scripts/scripts/cscript.c"
+function_slang=os.getcwd()+"/pop-paths-scripts/scripts/slang"
+python_mount_script=os.getcwd()+"/pop-paths-scripts/scripts/mount.py {}".format(mount_file_name)
 print(os.getcwd())
 
 # just using the command line hits libss2
@@ -238,14 +239,16 @@ commands = [
     
 ]
 
-#need to do a failed login and su for libpam-runtime and util-linux and login
+### MANUAL COMMANDS ###
+
+# need to do a failed login and su for libpam-runtime and util-linux and login
 # do a script command for util-linux and bsdutils
 # do a command that does gpgv
 # watch ls command to test procps
 # do a man command to test readline-common
 # run make menuconfig on the kernel file to get ncurses-bin to hit
 # do one manual apt to hit debconf
-# make menuconfig to do the ncurses-bin thing... I just need to get that file window up
+# make menuconfig to hit ncurses-bin
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
 # sudo login wrong_user
