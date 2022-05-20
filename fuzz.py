@@ -33,7 +33,7 @@ function_slang=os.getcwd()+"/pop-paths-scripts/slang"
 python_mount_script=os.getcwd()+"/pop-paths-scripts/mount.py {}".format(mount_file_name)
 print(os.getcwd())
 
-# just using the command line hits libss2 and readline-common
+# just using the command line hits libss2
 
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
@@ -44,8 +44,9 @@ commands = [
     "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
     "cd ~/Desktop/gpgTest",
     "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
     "gpg --show-keys VeraCrypt_PGP_public_key.asc", #testing libgpg-error0
+    "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
+    "gpg --show-keys VeraCrypt_PGP_public_key.asc",
     "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
     "gpg --import VeraCrypt_PGP_public_key.asc",
     "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
@@ -57,24 +58,23 @@ commands = [
     "make",
     "sudo make install",
     "cd ..",
-    "~/editline/examples/fileman", # testing libedit -- THESE AREN'T AUTOMATED
+    "~/editline/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
     "~/editline/examples/tc1",
     "~/editline/examples/wtc1",
     "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
     "gpg --encrypt ~/Desktop/gpg_test.txt",
     "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
-
-    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for slang
+    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "chmod +x fztopng",
-    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing slang
+    "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
-    "cp /usr/share/common-licenses/GPL-3 .", #testing PCRE
+    "cp /usr/share/common-licenses/GPL-3 .", #testing libpcre3
     "grep '^GNU' GPL-3",
     "grep '^[A-Z]' GPL-3",
     "grep '([A-Za-z ]*)' GPL-3",
     "grep -E '(GPL|General Public License)' GPL-3",
     "grep -E '[[:alpha:]]{16,20}' GPL-3",
-    "gcc -o ./ex {}".format(c_command_line_args), #testing libpopt0 (command line arguments)
+    "gcc -o ./ex {}".format(c_command_line_args), #testing libpopt0 (command line arguments) and libc6
     "./ex 'hello'",
     "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10", #testing mount for the next several lines
     "sudo losetup -f loopbackfile.img",
@@ -110,7 +110,7 @@ commands = [
     "who",
     "ln -s file2.txt file3.txt",
     "ls -l file3.txt",
-    "uuidgen -t", #testing libuuid and util-linux
+    "uuidgen -t", #testing libuuid1 and util-linux
     "uuidgen -r",
     "echo 'ls -ahl' > ./script.sh",
     "sudo debconf -p medium --frontend=readline sh -x ./script.sh",
@@ -120,7 +120,7 @@ commands = [
     "bash -i 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
-    "tar -zcvf ~/Desktop/tarred_information.tar.gz ~/Desktop/fuzzing", #using tar gz to test zlib1g and tar and gz
+    "tar -zcvf ~/Desktop/tarred_information.tar.gz ~/Desktop/fuzzing", #using tar gz to test zlib1g and tar and gzip
     "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ~/Desktop/info.txt", #testing lsb-base
     "sed 's/linux/unix' ~/Desktop/info.txt", #testing sed
     "sed 's/hello/aloha/2' ~/Desktop/info.txt",
@@ -172,7 +172,6 @@ commands = [
     "whoami",
     "sudo whoami",
     "rm ~/Desktop/tempFile.txt",
-    
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
@@ -183,7 +182,7 @@ commands = [
     "dnsdomainname",
     "nisdomainname",
     "ypdomainname",
-    "pidof firefox",
+    "pidof firefox", #testing sysvinit-utils
     "last",
     "sudo lastb",
     "last -n 5",
@@ -215,14 +214,14 @@ commands = [
     "echo 'VERBOSE=1' > ~/Desktop/test_config.conf",
     "sudo ucf ~/Desktop/test_config.conf /etc/ucf.conf", # testing ucf
     "cd ~",
-    "find / test.txt", #testing find
+    "find / test.txt", #testing findutils
     "sudo apt install mlocate", #testing debconf
-    "locate test.txt", #testing find
-    "gcc {} -o script".format(script2), #testing libstdc++6 and libc6
-    "./script", #testing libstdc++6 and libc6
+    "locate test.txt", #testing findutils
+    "gcc {} -o script".format(script2), #testing libstdc++6 
+    "./script", #testing libstdc++6 
     "sestatus",
-    "grep selinux /var/log/audit/audit.log", #testing grep and libsepol1
-    "sudo selinux-config-enforcing",
+    "grep selinux /var/log/audit/audit.log", #testing grep
+    "sudo selinux-config-enforcing", #testing libsepol1 and libselinux1
     "SELINUXTYPE=mls",
     "sudo setenforce 0",
     "sudo setenforce 1",
@@ -243,10 +242,10 @@ commands = [
 # do a script command for util-linux and bsdutils
 # do a command that does gpgv
 # watch ls command to test procps
-# do a man command
-# run make menuconfig on the kernel file to get ncurses to hit
+# do a man command to test readline-common
+# run make menuconfig on the kernel file to get ncurses-bin to hit
 # do one manual apt to hit debconf
-# make menuconfig to do the ncurses thing... I just need to get that file window up
+# make menuconfig to do the ncurses-bin thing... I just need to get that file window up
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
 # sudo login wrong_user
