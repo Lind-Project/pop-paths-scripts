@@ -60,19 +60,19 @@ commands = [
     "cd ~/Desktop",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
-    "./libedit-20210910-3.1/configure",
     "cd ./libedit-20210910-3.1",
+    "./configure",
     "make",
     "sudo make install",
     "cd ~/Desktop",
-    "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
-    "~/libedit-20210910-3.1/examples/tc1",
-    "~/libedit-20210910-3.1/examples/wtc1",
+    "~/Desktop/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
+    "~/Desktop/libedit-20210910-3.1/examples/tc1",
+    "~/Desktop/libedit-20210910-3.1/examples/wtc1",
     "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
-    "gpg --encrypt ~/Desktop/gpg_test.txt",
-    "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
+    "gpg -r purple --encrypt ~/Desktop/gpg_test.txt",
+    "gpg --decrypt ~/Desktop/gpg_test.txt.gpg",
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
-    "chmod +x fztopng",
+    "sudo chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 ./{}".format(extra_files), #testing libpcre3
