@@ -125,7 +125,6 @@ commands = [
     "sudo chmod u-rw ./test2.txt", #using chmod command to test libacl
     "sudo chmod a=rwx ./test2.txt",
     "bash -c 'echo helloThere'",
-    "bash -i 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
     "tar -zcvf ~/Desktop/tarred_information.tar.gz ~/Desktop/fuzzing", #using tar gz to test zlib1g and tar and gzip
