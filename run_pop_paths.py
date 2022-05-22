@@ -108,7 +108,7 @@ commands = [
     "pwd", #testing lsb-base
     "ps -aux", #testing procps
     "last", #testing sysvinit-utils
-    "lastb", #testing sysvinit-utils
+    "sudo lastb", #testing sysvinit-utils
     "mesg y", 
     "mesg n",
     "kill 100000", #testing util-linux
