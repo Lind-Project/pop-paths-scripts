@@ -24,7 +24,9 @@ import os
 import time
 import sys
 
-mount_file_name="./pop-paths-scripts/mnt_file" 
+extra_files="extra_files"
+
+mount_file_name="./pop-paths-scripts/{}/mnt_file".format(extra_files) 
 
 bash_script_file=os.getcwd()+"/pop-paths-scripts/scripts/bash_script.sh"
 perl_script_file=os.getcwd()+"/pop-paths-scripts/scripts/perl_script"
@@ -53,6 +55,8 @@ commands = [
     "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
     "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv 
+    "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
+    "rm VeraCrypt_PGP_public_key.asc ",
     "curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
     "./editline/configure",
     "cd ./editline",
@@ -69,7 +73,7 @@ commands = [
     "chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
-    "cp /usr/share/common-licenses/GPL-3 .", #testing libpcre3
+    "cp /usr/share/common-licenses/GPL-3 ./{}".format(extra_files), #testing libpcre3
     "grep '^GNU' GPL-3",
     "grep '^[A-Z]' GPL-3",
     "grep '([A-Za-z ]*)' GPL-3",
@@ -232,6 +236,7 @@ commands = [
     "ping 8.8.8.8 -c 10",
     "curl google.com",
     "curl -X POST 'google.com'",
+    "rm -rf util-linux",
     "wget http://localhost:8080/index.html",
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
