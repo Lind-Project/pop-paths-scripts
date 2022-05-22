@@ -59,14 +59,15 @@ commands = [
     "rm VeraCrypt_PGP_public_key.asc ",
     "cd ~",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
-    "./editline/configure",
-    "cd ./editline",
+    "tar -xvf editline",
+    "./libedit-20210910-3.1/configure",
+    "cd ./libedit-20210910-3.1",
     "make",
     "sudo make install",
     "cd ..",
-    "~/editline/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
-    "~/editline/examples/tc1",
-    "~/editline/examples/wtc1",
+    "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
+    "~/libedit-20210910-3.1/examples/tc1",
+    "~/libedit-20210910-3.1/examples/wtc1",
     "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
     "gpg --encrypt ~/Desktop/gpg_test.txt",
     "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
