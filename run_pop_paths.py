@@ -97,7 +97,7 @@ commands = [
     "bzip2 -df -vv --fast test_file.txt.bz2",
     "blkid -gksu raid --output full -S 1000", #using blkid command to test libblkid1
     "echo 'this is a tempfile' > ~/Desktop/tempFile.txt",
-    "wall ~/Desktop/tempFile.txt", #testing bsdutils
+    "cat ~/Desktop/tempFile.txt | wall", #testing bsdutils
     "vim -c 'q' ~/Desktop/tempFile.txt",
     "dir ~/Desktop",
     "cp ./test_file.txt ./test2.txt",
