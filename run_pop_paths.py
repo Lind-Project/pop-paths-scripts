@@ -192,11 +192,6 @@ commands = [
     "last",
     "sudo lastb",
     "last -n 5",
-    "gcc ~/Desktop/testfile.c",
-    "~/Desktop/a.out",
-    "gcc ~/Desktop/testfile.c -o ~/Desktop/output.exe",
-    "~/Desktop/output.exe",
-    "cat ~/Desktop/testfile.c",
     "cat ~/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ps -aux | grep 'firefox'", #testing grep and procps
     "free",
@@ -214,7 +209,9 @@ commands = [
     "w",
     "git clone https://github.com/util-linux/util-linux.git",
     "cd util-linux",
-    "./autogen.sh && ./configure && make",
+    "~/Desktop/util-linux/autogen.sh",
+    "~/Desktop/util-linux/configure",
+    "make",
     "make check-programs",
     "./tests/run.sh",
     "echo 'VERBOSE=1' > ~/Desktop/test_config.conf",
@@ -242,7 +239,9 @@ commands = [
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
     "netstat -rlv",
-    
+
+    # Cleaning up
+    "sudo rm -fr ~/Desktop/util-linux",
 ]
 
 ### MANUAL COMMANDS ###
@@ -273,4 +272,4 @@ except:
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
     os.system(command)
-    time.sleep(3)
+    time.sleep(.3)
