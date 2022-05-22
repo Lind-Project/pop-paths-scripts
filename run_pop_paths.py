@@ -139,7 +139,7 @@ commands = [
     "sudo chmod +xrw {}".format(bash_script_file), #testing bash
     "bash {}".format(bash_script_file),
     "sudo chmod +x {}".format(perl_script_file),#testing perl-base
-    "./{}".format(perl_script_file),
+    "{}".format(perl_script_file),
     "echo 'Welcome To Lind' | sed 's/\([A-Z]\)/\(\1\)/g'",
     "printenv",
     "pwd",
