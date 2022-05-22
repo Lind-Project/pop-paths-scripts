@@ -47,17 +47,17 @@ commands = [
     "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
     "cd ~/Desktop/gpgTest",
     "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "gpg --show-keys VeraCrypt_PGP_public_key.asc", #testing libgpg-error0
+    "gpg --show-keys VeraCrypt_PGP_public_key.asc*", #testing libgpg-error0
     "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
     "gpg --show-keys VeraCrypt_PGP_public_key.asc",
     "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
     "gpg --import VeraCrypt_PGP_public_key.asc",
-    "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb"
-    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", #testing gpgv 
+    "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING
+    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb" ### NOT WORKING
+    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING #testing gpgv 
     "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "rm VeraCrypt_PGP_public_key.asc ",
-    "curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
+    "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
     "./editline/configure",
     "cd ./editline",
     "make",
@@ -270,6 +270,6 @@ except:
     pass
 
 for i, command in enumerate(commands[count:]):
-    print("\n\n\nCOMMAND {}::\n".format(i) + command + "\n\n\n")
+    print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
     os.system(command)
     time.sleep(5)
