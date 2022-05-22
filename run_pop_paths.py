@@ -272,6 +272,5 @@ except:
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i) + command + "\n\n\n")
     os.system(command)
-    user_var = input("Continue (Y/N): ")
-    if user_var == "y":
+    if input("Continue (Y/N): "):
         break
