@@ -43,7 +43,7 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "rmdir -ry ~/Desktop/gpgTest",
+    "rmdir ~/Desktop/gpgTest",
     "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
     "cd ~/Desktop/gpgTest",
     "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
