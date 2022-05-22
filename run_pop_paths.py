@@ -175,7 +175,7 @@ commands = [
     "cat ~/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ls ~/Desktop | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
-    "cron -V",
+    "sudo cron",
     "whoami",
     "sudo whoami",
     "rm ~/Desktop/tempFile.txt",
