@@ -119,10 +119,11 @@ commands = [
     "ls -l file3.txt",
     "uuidgen -t", #testing libuuid1 and util-linux
     "uuidgen -r",
+    "touch ./script.sh"
     "echo 'ls -ahl' > ./script.sh",
     "sudo debconf -p medium --frontend=readline sh -x ./script.sh",
-    "chmod u-rw ./test2.txt", #using chmod command to test libacl
-    "chmod a=rwx ./test2.txt",
+    "sudo chmod u-rw ./test2.txt", #using chmod command to test libacl
+    "sudo chmod a=rwx ./test2.txt",
     "bash -c 'echo helloThere'",
     "bash -i 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
@@ -136,9 +137,9 @@ commands = [
     "time cat ~/Desktop/info.txt",
     "time ls",
     "time pwd",
-    "chmod +xrw {}".format(bash_script_file), #testing bash
+    "sudo chmod +xrw {}".format(bash_script_file), #testing bash
     "bash {}".format(bash_script_file),
-    "chmod +x {}".format(perl_script_file),#testing perl-base
+    "sudo chmod +x {}".format(perl_script_file),#testing perl-base
     "./{}".format(perl_script_file),
     "echo 'Welcome To Lind' | sed 's/\([A-Z]\)/\(\1\)/g'",
     "printenv",
