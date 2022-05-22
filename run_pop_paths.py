@@ -57,14 +57,14 @@ commands = [
     "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING #testing gpgv 
     "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "rm VeraCrypt_PGP_public_key.asc ",
-    "cd ~",
+    "cd ~/Desktop",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
     "./libedit-20210910-3.1/configure",
     "cd ./libedit-20210910-3.1",
     "make",
     "sudo make install",
-    "cd ..",
+    "cd ~/Desktop",
     "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
     "~/libedit-20210910-3.1/examples/tc1",
     "~/libedit-20210910-3.1/examples/wtc1",
