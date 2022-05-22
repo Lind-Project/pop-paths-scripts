@@ -119,7 +119,7 @@ commands = [
     "ls -l file3.txt",
     "uuidgen -t", #testing libuuid1 and util-linux
     "uuidgen -r",
-    "touch ./script.sh"
+    "touch ./script.sh",
     "echo 'ls -ahl' > ./script.sh",
     "sudo debconf -p medium --frontend=readline sh -x ./script.sh",
     "sudo chmod u-rw ./test2.txt", #using chmod command to test libacl
