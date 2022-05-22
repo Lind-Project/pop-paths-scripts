@@ -175,7 +175,7 @@ commands = [
     "cat ~/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ls ~/Desktop | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
-    "sudo cron",
+    "sudo cron", ### SOMETIMES WORKS
     "whoami",
     "sudo whoami",
     "rm ~/Desktop/tempFile.txt",
@@ -185,7 +185,6 @@ commands = [
     "tail -3 /var/log/syslog",
     "hostname", #testing hostname
     "domainname",
-    "nodename",
     "dnsdomainname",
     "nisdomainname",
     "ypdomainname",
