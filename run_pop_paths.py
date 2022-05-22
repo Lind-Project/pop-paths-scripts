@@ -90,8 +90,8 @@ commands = [
     "sudo mkdir /media/loop100",
     "sudo mount $(python {}) /media/loop100".format(python_mount_script),
     "sudo umount /media/loop100",
-    "losetup -d $(python {})".format(python_mount_script),
-    "rm loopbackfile.img",
+    "sudo losetup -d $(python {})".format(python_mount_script),
+    "sudo rm loopbackfile.img",
     "bzip2 -zfk -vv --best test_file.txt", #zipping files to test libbz2-1.0
     "bzip2 -t -vv --best test_file.txt.bz2",
     "bzip2 -df -vv --fast test_file.txt.bz2",
