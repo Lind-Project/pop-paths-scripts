@@ -43,7 +43,7 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "rmdir ~/Desktop/gpgTest",
+    "rm -r ~/Desktop/gpgTest",
     "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
     "cd ~/Desktop/gpgTest",
     "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
@@ -58,15 +58,15 @@ commands = [
     "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "rm VeraCrypt_PGP_public_key.asc ",
     "cd ~",
-    "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz",
-    "./libedit-20210910-3.1/configure",
-    "cd ./libedit-20210910-3.1",
+    "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
+    "./editline/configure",
+    "cd ./editline",
     "make",
     "sudo make install",
     "cd ..",
-    "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
-    "~/libedit-20210910-3.1/examples/tc1",
-    "~/libedit-20210910-3.1/examples/wtc1",
+    "~/editline/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
+    "~/editline/examples/tc1",
+    "~/editline/examples/wtc1",
     "echo 'test' > ~/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
     "gpg --encrypt ~/Desktop/gpg_test.txt",
     "gpg --dencrypt ~/Desktop/gpg_test.txt.gpg",
