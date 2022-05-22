@@ -57,6 +57,7 @@ commands = [
     "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING #testing gpgv 
     "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
     "rm VeraCrypt_PGP_public_key.asc ",
+    "cd ~",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz -o ./editline",
     "./editline/configure",
     "cd ./editline",
@@ -272,4 +273,4 @@ except:
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
     os.system(command)
-    time.sleep(5)
+    time.sleep(3)
