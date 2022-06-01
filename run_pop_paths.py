@@ -7,6 +7,11 @@
     This ensures that the commands in this script has root privileges without you needing to input the password again
 
 '''
+
+import os
+import time
+import sys
+
 apparmor_stop=[ #we need to run this before installing selinux because apparmor and selinux conflict
     "sudo systemctl stop apparmor",
     "sudo apt-get remove apparmor -y",
@@ -16,16 +21,11 @@ apparmor_stop=[ #we need to run this before installing selinux because apparmor 
 selinux_install=[ #the commands for installing and starting selinux
     "sudo apt install policycoreutils selinux-utils selinux-basics",
     "sudo selinux-activate",
-    "sudo selinux-config-enforcing"
+    "sudo cp {} /etc/selinux/config".format(os.getcwd()+"/pop-paths-scripts/scripts/selinux-policy")
     "sudo reboot now",
 ]
 
-import os
-import time
-import sys
-
 extra_files="extra_files"
-
 mount_file_name="./pop-paths-scripts/{}/mnt_file".format(extra_files) 
 
 bash_script_file=os.getcwd()+"/pop-paths-scripts/scripts/bash_script.sh"
@@ -223,18 +223,14 @@ commands = [
     "gcc {} -o script".format(script2), #testing libstdc++6 
     "./script", #testing libstdc++6 
     "sestatus",
+    "sudo selinux-activate", #testing libsepol1 and libselinux1
     "grep selinux /var/log/audit/audit.log", #testing grep
-    "sudo selinux-config-enforcing", #testing libsepol1 and libselinux1
-    "SELINUXTYPE=mls",
-    "sudo setenforce 0",
-    "sudo setenforce 1",
     "logsave -asv ./temp_log ls", #testing e2fsprogs
     "logsave -asv ./temp_log pwd",
     "ping google.com -c 10", #here through the bottom of array for netbase
     "ping 8.8.8.8 -c 10",
     "curl google.com",
     "curl -X POST 'google.com'",
-    "rm -rf util-linux",
     "wget http://localhost:8080/index.html",
     "nc -G 5 -z 125.0.0.1 20-80",
     "nc -G 5 -z 8.8.8.8 80",
