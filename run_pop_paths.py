@@ -53,6 +53,7 @@ commands = [
     "gpg2 --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 46181433FBB75451 D94AA3FOEFE21092",
     "gpg2 --verify SHA256SUMS.gpg SHA256SUMS",
     "sha256sum ubuntu-16.04.1-desktop-amd64.iso",
+    "echo foo > foo.txt",
     "wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u6/x86_64/x86_64-boot-uek.iso", #testing libgpg-error0
     "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 | sudo gpg --import",
     "wget https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U6-Server-x86_64.checksum",
@@ -258,8 +259,9 @@ commands = [
 # Also need to gpg gen key, encrypt, decrypt
 #   gpg --gen-key
 #   gpg --export -a **EMAIL**
-#   gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.kbx --import
-#   echo hello world | gpg -s -u **EMAIL** | gpgv
+#   gpg --local-user **EMAIL** --sign foo.txt
+#   gpg --export **EMAIL** > key.gpg
+#   gpgv --keyring ./key.gpg foo.txt.gpg
 
 
 count=0
