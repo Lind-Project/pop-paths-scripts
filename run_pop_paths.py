@@ -240,16 +240,14 @@ commands = [
 
 ### MANUAL COMMANDS ###
 
-# need to do a failed login and su for libpam-runtime and util-linux and login
 # do a script command for util-linux and bsdutils
-# do a command that does gpgv
 # watch ls command to test procps
 # do a man command to test readline-common
 # run make menuconfig on the kernel file to get ncurses-bin to hit
 # do one manual apt to hit debconf
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
-# sudo login wrong_user
+# sudo login wrong_user -- for libpam-runtime and util-linux and login
 # Also need to gpg gen key, encrypt, decrypt
 #   gpg --gen-key
 #   gpg --export -a **EMAIL**
