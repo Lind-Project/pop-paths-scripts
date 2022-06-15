@@ -253,8 +253,6 @@ commands = [
 #   gpg --export -a **EMAIL**
 #   gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.kbx --import
 #   echo hello world | gpg -s -u **EMAIL** | gpgv
-#   gpg --encrypt --recipient 'Your Name' foo.txt
-#   gpg --output foo.txt --decrypt foo.txt.gpg
 
 
 count=0
