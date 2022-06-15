@@ -51,6 +51,8 @@ commands = [
     "wget https://old-releases.ubuntu.com/releases/16.04.2/SHA256SUMS.gpg",
     "gpg2 --verify SHA256SUMS.gpg SHA256SUMS",
     "gpg2 --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys FBB75451 EFE21092",
+    "gpg2 --verify SHA256SUMS.gpg SHA256SUMS",
+    "sha256sum ubuntu-16.04.1-desktop-amd64.iso",
     "wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u6/x86_64/x86_64-boot-uek.iso", #testing libgpg-error0
     "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 | sudo gpg --import",
     "wget https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U6-Server-x86_64.checksum",
