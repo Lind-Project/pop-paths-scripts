@@ -43,20 +43,17 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "rm -r ./gpgTest",
-    "mkdir ./gpgTest", #using mkdir to test coreutils
-    "cd ./gpgTest",
-    "wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "gpg --show-keys VeraCrypt_PGP_public_key.asc*", #testing libgpg-error0
-    "wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc",
-    "gpg --show-keys VeraCrypt_PGP_public_key.asc",
+    "rm -r ~/Desktop/gpgTest",
+    "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
+    "cd ~/Desktop/gpgTest",
+    "wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u6/x86_64/x86_64-boot-uek.iso", #testing libgpg-error0
+    "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 | sudo gpg --import",
+    "wget https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U6-Server-x86_64.checksum",
+    "sudo gpg --verify-files OracleLinux-R8-U6-Server-x86_64.checksum",
     "gpg --with-fingerprint VeraCrypt_PGP_public_key.asc",
-    "gpg --import VeraCrypt_PGP_public_key.asc",
-    "gpg --verify VeraCrypt_PGP_public_key.asc veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING
-    "gpg --verify veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb" ### NOT WORKING
-    "gpgv veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb.sig veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb", ### NOT WORKING #testing gpgv 
-    "rm veracrypt-console-1.24-Update7-Ubuntu-20.04-amd64.deb",
-    "rm VeraCrypt_PGP_public_key.asc ",
+    "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 -o RPM-GPG-KEY-oracle",
+    "gpg --quiet --keyid-format 0xlong --with-fingerprint RPM-GPG-KEY-oracle",
+    "grep x86_64-boot-uek.iso OracleLinux-R8-U6-Server-x86_64.checksum | sha256sum -c",
     "cd /home/purple/Desktop",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
@@ -76,11 +73,11 @@ commands = [
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
     "cp /usr/share/common-licenses/GPL-3 ./{}".format(extra_files), #testing libpcre3
-    "grep '^GNU' GPL-3",
-    "grep '^[A-Z]' GPL-3",
-    "grep '([A-Za-z ]*)' GPL-3",
-    "grep -E '(GPL|General Public License)' GPL-3",
-    "grep -E '[[:alpha:]]{16,20}' GPL-3",
+    "grep '^GNU' /usr/share/common-licenses/GPL-3",
+    "grep '^[A-Z]' /usr/share/common-licenses/GPL-3",
+    "grep '([A-Za-z ]*)' /usr/share/common-licenses/GPL-3",
+    "grep -E '(GPL|General Public License)' /usr/share/common-licenses/GPL-3",
+    "grep -E '[[:alpha:]]{16,20}' /usr/share/common-licenses/GPL-3",
     "gcc -o ./ex {}".format(c_command_line_args), #testing libpopt0 (command line arguments) and libc6
     "./ex 'hello'",
     "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10", #testing mount for the next several lines
@@ -92,6 +89,7 @@ commands = [
     "sudo umount /media/loop100",
     "sudo losetup -d $(python {})".format(python_mount_script),
     "sudo rm loopbackfile.img",
+    "echo 'hello' > test_file.txt",
     "bzip2 -zfk -vv --best test_file.txt", #zipping files to test libbz2-1.0
     "bzip2 -t -vv --best test_file.txt.bz2",
     "bzip2 -df -vv --fast test_file.txt.bz2",
@@ -175,7 +173,7 @@ commands = [
     "cat /home/purple/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ls /home/purple/Desktop | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
-    "sudo cron", ### SOMETIMES WORKS
+    "sudo cron", 
     "whoami",
     "sudo whoami",
     "rm /home/purple/Desktop/tempFile.txt",
@@ -249,12 +247,14 @@ commands = [
 # do a man command to test readline-common
 # run make menuconfig on the kernel file to get ncurses-bin to hit
 # do one manual apt to hit debconf
-# make menuconfig to hit ncurses-bin
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
 # sudo login wrong_user
 # Also need to gpg gen key, encrypt, decrypt
 #   gpg --gen-key
+#   gpg --export -a **EMAIL**
+#   gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.kbx --import
+#   echo hello world | gpg -s -u **EMAIL** | gpgv
 #   gpg --encrypt --recipient 'Your Name' foo.txt
 #   gpg --output foo.txt --decrypt foo.txt.gpg
 
