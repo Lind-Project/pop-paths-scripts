@@ -43,9 +43,9 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "rm -r ~/Desktop/gpgTest",
-    "mkdir ~/Desktop/gpgTest", #using mkdir to test coreutils
-    "cd ~/Desktop/gpgTest",
+    "rm -r ~/gpgTest",
+    "mkdir ~/gpgTest", #using mkdir to test coreutils
+    "cd ~/gpgTest",
     "wget https://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.1-desktop-amd64.iso",
     "wget https://old-releases.ubuntu.com/releases/16.04.2/SHA256SUMS",
     "wget https://old-releases.ubuntu.com/releases/16.04.2/SHA256SUMS.gpg",
