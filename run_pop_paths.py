@@ -66,12 +66,11 @@ commands = [
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
     "sudo ./libedit-20210910-3.1/configure",
-    "sudo make",
-    "sudo make install",
-    "cd ~",
-    "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
-    "~/libedit-20210910-3.1/examples/tc1",
-    "~/libedit-20210910-3.1/examples/wtc1",
+    "sudo make -C ./libedit-20210910-3.1",
+    "sudo make -C ./libedit-20210910-3.1 install",
+    "./libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
+    "./libedit-20210910-3.1/examples/tc1",
+    "./libedit-20210910-3.1/examples/wtc1",
     "echo 'test' > ~/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
     "gpg -r purple --encrypt ~/gpg_test.txt",
     "gpg --decrypt ~/gpg_test.txt.gpg",
