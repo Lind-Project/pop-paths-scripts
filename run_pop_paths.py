@@ -62,20 +62,19 @@ commands = [
     "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 -o RPM-GPG-KEY-oracle",
     "gpg --quiet --keyid-format 0xlong --with-fingerprint RPM-GPG-KEY-oracle",
     "grep x86_64-boot-uek.iso OracleLinux-R8-U6-Server-x86_64.checksum | sha256sum -c",
-    "cd /home/purple/Desktop",
+    "cd ~",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
-    "cd ./libedit-20210910-3.1",
-    "./configure",
-    "make",
+    "sudo ./libedit-20210910-3.1/configure",
+    "sudo make",
     "sudo make install",
-    "cd /home/purple/Desktop",
-    "/home/purple/Desktop/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
-    "/home/purple/Desktop/libedit-20210910-3.1/examples/tc1",
-    "/home/purple/Desktop/libedit-20210910-3.1/examples/wtc1",
-    "echo 'test' > /home/purple/Desktop/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
-    "gpg -r purple --encrypt /home/purple/Desktop/gpg_test.txt",
-    "gpg --decrypt /home/purple/Desktop/gpg_test.txt.gpg",
+    "cd ~",
+    "~/libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
+    "~/libedit-20210910-3.1/examples/tc1",
+    "~/libedit-20210910-3.1/examples/wtc1",
+    "echo 'test' > ~/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
+    "gpg -r purple --encrypt ~/gpg_test.txt",
+    "gpg --decrypt ~/gpg_test.txt.gpg",
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
@@ -102,11 +101,11 @@ commands = [
     "bzip2 -t -vv --best test_file.txt.bz2",
     "bzip2 -df -vv --fast test_file.txt.bz2",
     "blkid -gksu raid --output full -S 1000", #using blkid command to test libblkid1
-    "echo 'this is a tempfile' > /home/purple/Desktop/tempFile.txt",
-    "cat /home/purple/Desktop/tempFile.txt | wall", #testing bsdutils
-    "vim -c 'q' /home/purple/Desktop/tempFile.txt",
-    "dir /home/purple/Desktop",
-    "cp /home/purple/Desktop/test_file.txt /home/purple/Desktop/test2.txt",
+    "echo 'this is a tempfile' > ~/tempFile.txt",
+    "cat ~/tempFile.txt | wall", #testing bsdutils
+    "vim -c 'q' ~/tempFile.txt",
+    "dir ~",
+    "cp ~/test_file.txt ~/test2.txt",
     "mkdir ./temp_dir", 
     "rmdir ./temp_dir", #using rmdir to test coreutils
     "printenv",
@@ -133,13 +132,13 @@ commands = [
     "bash -c 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
-    "tar -zcvf /home/purple/Desktop/tarred_information.tar.gz /home/purple/Desktop/fuzzing", #using tar gz to test zlib1g and tar and gzip
-    "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > /home/purple/Desktop/info.txt", #testing lsb-base
-    "sed 's/linux/unix' /home/purple/Desktop/info.txt", #testing sed
-    "sed 's/hello/aloha/2' /home/purple/Desktop/info.txt",
-    "md5sum /home/purple/Desktop/info.txt",
-    "cksum /home/purple/Desktop/info.txt",
-    "time cat /home/purple/Desktop/info.txt",
+    "tar -zcvf /tarred_information.tar.gz /fuzzing", #using tar gz to test zlib1g and tar and gzip
+    "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ~/info.txt", #testing lsb-base
+    "sed 's/linux/unix' ~/info.txt", #testing sed
+    "sed 's/hello/aloha/2' ~/info.txt",
+    "md5sum ~/info.txt",
+    "cksum ~/info.txt",
+    "time cat ~/info.txt",
     "time ls",
     "time pwd",
     "sudo chmod +xrw {}".format(bash_script_file), #testing bash
@@ -166,25 +165,25 @@ commands = [
     "getfattr test.txt",
     "sudo add-shell other_shell", #testing debianutils
     "sudo remove-shell other_shell", #testing debianutils
-    "tempfile -d /home/purple/Desktop -n /home/purple/Desktop/tempFILE.txt", #testing debianutils
-    "tempfile -n /home/purple/Desktop/tempFILE.txt", #testing debianutils
-    "tempfile -d /home/purple/Desktop", #testing debianutils
-    "rm /home/purple/Desktop/file*",
-    "rm /home/purple/Desktop/tempFILE.txt",
+    "tempfile -d ~ -n ~/tempFILE.txt", #testing debianutils
+    "tempfile -n ~/tempFILE.txt", #testing debianutils
+    "tempfile -d ~", #testing debianutils
+    "rm ~/file*",
+    "rm ~/tempFILE.txt",
     "ischroot", #testing debianutils
     "sudo ischroot", #testing debianutils
-    "savelog -t -u lind /home/purple/Desktop/logfile", #testing debianutils
-    "rm /home/purple/Desktop/logfile",
-    "rm /home/purple/Desktop/logfile.0",
-    "logger -f /home/purple/Desktop/INFO.txt", #testing bsdutils
+    "savelog -t -u lind ~/logfile", #testing debianutils
+    "rm ~/logfile",
+    "rm ~/logfile.0",
+    "logger -f ~/INFO.txt", #testing bsdutils
     "ps -aux", #testing procps
-    "cat /home/purple/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
-    "ls /home/purple/Desktop | xargs cat",
+    "cat ~/otherRandomTextFile.txt | grep 'hello'", #testing grep
+    "ls ~ | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
     "sudo cron", 
     "whoami",
     "sudo whoami",
-    "rm /home/purple/Desktop/tempFile.txt",
+    "rm ~/tempFile.txt",
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
@@ -198,7 +197,7 @@ commands = [
     "last",
     "sudo lastb",
     "last -n 5",
-    "cat /home/purple/Desktop/otherRandomTextFile.txt | grep 'hello'", #testing grep
+    "cat ~/otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ps -aux | grep 'firefox'", #testing grep and procps
     "free",
     "free -hl -c 3",
@@ -215,13 +214,13 @@ commands = [
     "w",
     "git clone https://github.com/util-linux/util-linux.git",
     "cd util-linux",
-    "/home/purple/Desktop/util-linux/autogen.sh",
-    "/home/purple/Desktop/util-linux/configure",
+    "~/util-linux/autogen.sh",
+    "~/util-linux/configure",
     "make",
     "make check-programs",
     "./tests/run.sh",
-    "echo 'VERBOSE=1' > /home/purple/Desktop/test_config.conf",
-    "sudo ucf /home/purple/Desktop/test_config.conf /etc/ucf.conf", # testing ucf
+    "echo 'VERBOSE=1' > ~/test_config.conf",
+    "sudo ucf ~/test_config.conf /etc/ucf.conf", # testing ucf
     "cd /home/purple",
     "find / test.txt", #testing findutils
     "sudo apt install mlocate", #testing debconf
@@ -243,7 +242,7 @@ commands = [
     "netstat -rlv",
 
     # Cleaning up
-    "sudo rm -fr /home/purple/Desktop/util-linux",
+    "sudo rm -fr ~/util-linux",
 ]
 
 ### MANUAL COMMANDS ###
