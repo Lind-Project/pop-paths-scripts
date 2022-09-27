@@ -43,9 +43,8 @@ commands = [
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "sudo passwd lind2", #testing passwd and lsb-base
     "sudo userdel lind2",
-    "rm -r ~/gpgTest",
-    "mkdir ~/gpgTest", #using mkdir to test coreutils
-    "cd ~/gpgTest",
+    "rm -r ./gpgTest",
+    "mkdir ./gpgTest", #using mkdir to test coreutils
     "wget https://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.1-desktop-amd64.iso",
     "wget https://old-releases.ubuntu.com/releases/16.04.2/SHA256SUMS",
     "wget https://old-releases.ubuntu.com/releases/16.04.2/SHA256SUMS.gpg",
@@ -62,7 +61,6 @@ commands = [
     "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 -o RPM-GPG-KEY-oracle",
     "gpg --quiet --keyid-format 0xlong --with-fingerprint RPM-GPG-KEY-oracle",
     "grep x86_64-boot-uek.iso OracleLinux-R8-U6-Server-x86_64.checksum | sha256sum -c",
-    "cd ~",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
     "sudo ./libedit-20210910-3.1/configure",
@@ -71,9 +69,9 @@ commands = [
     "./libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
     "./libedit-20210910-3.1/examples/tc1",
     "./libedit-20210910-3.1/examples/wtc1",
-    "echo 'test' > ~/gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
-    "gpg -r purple --encrypt ~/gpg_test.txt",
-    "gpg --decrypt ~/gpg_test.txt.gpg",
+    "echo 'test' > ./gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
+    "gpg -r purple --encrypt ./gpg_test.txt",
+    "gpg --decrypt ./gpg_test.txt.gpg",
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
@@ -89,22 +87,22 @@ commands = [
     "sudo dd if=/dev/zero of=loopbackfile.img bs=1M count=10", #testing mount for the next several lines
     "sudo losetup -f loopbackfile.img",
     "sudo losetup -a | grep 'loopbackfile.img' > '{}'".format(mount_file_name),
-    "sudo mkfs.ext4 $(python {})".format(python_mount_script),
+    "sudo mkfs.ext4 $(python3 {})".format(python_mount_script),
     "sudo mkdir /media/loop100",
-    "sudo mount $(python {}) /media/loop100".format(python_mount_script),
+    "sudo mount $(python3 {}) /media/loop100".format(python_mount_script),
     "sudo umount /media/loop100",
-    "sudo losetup -d $(python {})".format(python_mount_script),
+    "sudo losetup -d $(python3 {})".format(python_mount_script),
     "sudo rm loopbackfile.img",
     "echo 'hello' > test_file.txt",
     "bzip2 -zfk -vv --best test_file.txt", #zipping files to test libbz2-1.0
     "bzip2 -t -vv --best test_file.txt.bz2",
     "bzip2 -df -vv --fast test_file.txt.bz2",
     "blkid -gksu raid --output full -S 1000", #using blkid command to test libblkid1
-    "echo 'this is a tempfile' > ~/tempFile.txt",
-    "cat ~/tempFile.txt | wall", #testing bsdutils
-    "vim -c 'q' ~/tempFile.txt",
-    "dir ~",
-    "cp ~/test_file.txt ~/test2.txt",
+    "echo 'this is a tempfile' > ./tempFile.txt",
+    "cat ./tempFile.txt | wall", #testing bsdutils
+    "vim -c 'q' ./tempFile.txt",
+    "dir ./",
+    "cp ./test_file.txt ./test2.txt",
     "mkdir ./temp_dir", 
     "rmdir ./temp_dir", #using rmdir to test coreutils
     "printenv",
@@ -131,13 +129,13 @@ commands = [
     "bash -c 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
-    "tar -zcvf /tarred_information.tar.gz /fuzzing", #using tar gz to test zlib1g and tar and gzip
-    "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ~/info.txt", #testing lsb-base
-    "sed 's/linux/unix' ~/info.txt", #testing sed
-    "sed 's/hello/aloha/2' ~/info.txt",
-    "md5sum ~/info.txt",
-    "cksum ~/info.txt",
-    "time cat ~/info.txt",
+    "tar -zcvf ./tarred_information.tar.gz ./fuzzing", #using tar gz to test zlib1g and tar and gzip
+    "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ./info.txt", #testing lsb-base
+    "sed 's/linux/unix' ./info.txt", #testing sed
+    "sed 's/hello/aloha/2' ./info.txt",
+    "md5sum ./info.txt",
+    "cksum ./info.txt",
+    "time cat ./info.txt",
     "time ls",
     "time pwd",
     "sudo chmod +xrw {}".format(bash_script_file), #testing bash
@@ -164,25 +162,25 @@ commands = [
     "getfattr test.txt",
     "sudo add-shell other_shell", #testing debianutils
     "sudo remove-shell other_shell", #testing debianutils
-    "tempfile -d ~ -n ~/tempFILE.txt", #testing debianutils
-    "tempfile -n ~/tempFILE.txt", #testing debianutils
-    "tempfile -d ~", #testing debianutils
-    "rm ~/file*",
-    "rm ~/tempFILE.txt",
+    "tempfile -d ./ -n ./tempFILE.txt", #testing debianutils
+    "tempfile -n ./tempFILE.txt", #testing debianutils
+    "tempfile -d ./", #testing debianutils
+    "rm ./file*",
+    "rm ./tempFILE.txt",
     "ischroot", #testing debianutils
     "sudo ischroot", #testing debianutils
-    "savelog -t -u lind ~/logfile", #testing debianutils
-    "rm ~/logfile",
-    "rm ~/logfile.0",
-    "logger -f ~/INFO.txt", #testing bsdutils
+    "savelog -t -u lind ./logfile", #testing debianutils
+    "rm ./logfile",
+    "rm ./logfile.0",
+    "logger -f ./INFO.txt", #testing bsdutils
     "ps -aux", #testing procps
-    "cat ~/otherRandomTextFile.txt | grep 'hello'", #testing grep
-    "ls ~ | xargs cat",
+    "cat ./otherRandomTextFile.txt | grep 'hello'", #testing grep
+    "ls ./ | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
     "sudo cron", 
     "whoami",
     "sudo whoami",
-    "rm ~/tempFile.txt",
+    "rm ./tempFile.txt",
     "cat /etc/profile", #testing base-files
     "logger `who`",
     "logger `pwd`",
@@ -196,7 +194,7 @@ commands = [
     "last",
     "sudo lastb",
     "last -n 5",
-    "cat ~/otherRandomTextFile.txt | grep 'hello'", #testing grep
+    "cat ./otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ps -aux | grep 'firefox'", #testing grep and procps
     "free",
     "free -hl -c 3",
@@ -212,15 +210,13 @@ commands = [
     "vmstat -t",
     "w",
     "git clone https://github.com/util-linux/util-linux.git",
-    "cd util-linux",
-    "~/util-linux/autogen.sh",
-    "~/util-linux/configure",
+    "./util-linux/autogen.sh",
+    "./util-linux/configure",
     "make",
     "make check-programs",
     "./tests/run.sh",
-    "echo 'VERBOSE=1' > ~/test_config.conf",
-    "sudo ucf ~/test_config.conf /etc/ucf.conf", # testing ucf
-    "cd /home/purple",
+    "echo 'VERBOSE=1' > ./test_config.conf",
+    "sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
     "find / test.txt", #testing findutils
     "sudo apt install mlocate", #testing debconf
     "locate test.txt", #testing findutils
@@ -241,7 +237,7 @@ commands = [
     "netstat -rlv",
 
     # Cleaning up
-    "sudo rm -fr ~/util-linux",
+    "sudo rm -fr ./util-linux",
 ]
 
 ### MANUAL COMMANDS ###
