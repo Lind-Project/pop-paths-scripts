@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn bash ssh_command.sh
+expect {Are you sure you want to continue connecting (yes/no/[fingerprint])? }
+send -- "yes\r"
+expect "ubuntu@localhost's password: "
+send -- "password\r"
+interact
