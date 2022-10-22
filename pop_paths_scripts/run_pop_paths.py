@@ -23,6 +23,7 @@ selinux_install=[ #the commands for installing and starting selinux
     "sudo apt-get install -y policycoreutils selinux-utils selinux-basics",
     "sudo selinux-activate",
     "sudo cp {} /etc/selinux/config".format(os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/selinux-policy"),
+    "echo 'REBOOTING NOW'",
     "sudo reboot now",
 ]
 
