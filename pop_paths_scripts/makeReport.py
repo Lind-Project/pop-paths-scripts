@@ -1,5 +1,5 @@
 # Author: Tristan Brigham (TristanB22) 
-# To reset gcov values: "echo 0 > /sys/kernel/debug/gcov/reset
+# To reset gcov values: "echo 0 > /sys/kernel/debug/gcov/reset'
 import os
 import sys
 import time
