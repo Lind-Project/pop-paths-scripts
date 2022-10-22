@@ -15,6 +15,7 @@ import sys
 apparmor_stop=[ #we need to run this before installing selinux because apparmor and selinux conflict
     "sudo systemctl stop apparmor",
     "sudo apt-get remove apparmor -y",
+    "echo 'REBOOTING NOW",
     "sudo reboot now",
 ]
 
