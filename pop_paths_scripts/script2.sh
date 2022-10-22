@@ -1,0 +1,1 @@
+sudo python pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 1

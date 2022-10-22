@@ -19,21 +19,21 @@ apparmor_stop=[ #we need to run this before installing selinux because apparmor 
 ]
 
 selinux_install=[ #the commands for installing and starting selinux
-    "sudo apt install policycoreutils selinux-utils selinux-basics",
+    "sudo apt-get install -y policycoreutils selinux-utils selinux-basics",
     "sudo selinux-activate",
-    "sudo cp {} /etc/selinux/config".format(os.getcwd()+"/pop-paths-scripts/scripts/selinux-policy"),
+    "sudo cp {} /etc/selinux/config".format(os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/selinux-policy"),
     "sudo reboot now",
 ]
 
 extra_files="extra_files"
-mount_file_name="./pop-paths-scripts/{}/mnt_file".format(extra_files) 
+mount_file_name="./pop-paths-scripts/pop_paths_scripts/{}/mnt_file".format(extra_files) 
 
-bash_script_file=os.getcwd()+"/pop-paths-scripts/scripts/bash_script.sh"
-perl_script_file=os.getcwd()+"/pop-paths-scripts/scripts/perl_script"
-script2=os.getcwd()+"/pop-paths-scripts/scripts/cscript2.cpp"
-c_command_line_args=os.getcwd()+"/pop-paths-scripts/scripts/cscript.c"
-function_slang=os.getcwd()+"/pop-paths-scripts/scripts/slang"
-python_mount_script=os.getcwd()+"/pop-paths-scripts/scripts/mount.py {}".format(mount_file_name)
+bash_script_file=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/bash_script.sh"
+perl_script_file=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/perl_script"
+script2=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/cscript2.cpp"
+c_command_line_args=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/cscript.c"
+function_slang=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/slang"
+python_mount_script=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/mount.py {}".format(mount_file_name)
 print(os.getcwd())
 
 # just using the command line hits libss2
