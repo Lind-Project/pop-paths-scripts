@@ -274,5 +274,5 @@ elif argument == 1:
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
     os.system(command)
-    input()
+    # input()
     time.sleep(.3)
