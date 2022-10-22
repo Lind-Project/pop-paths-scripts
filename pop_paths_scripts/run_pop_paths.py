@@ -259,10 +259,17 @@ commands = [
 
 
 count=0
+argument = 0
 try:
-    count = int(sys.argv[1])
+    argument = int(sys.argv[1])
+    count = int(sys.argv[2])
 except:
     pass
+
+if argument == 0:
+    commands = apparmor_stop
+elif argument == 1:
+    commands = selinux_install
 
 for i, command in enumerate(commands[count:]):
     print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
