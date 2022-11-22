@@ -2,5 +2,5 @@
 
 while [ 1 -eq 1]; 
 do
-    /opt/ltp/runltp
+    sudo /opt/ltp/runltp
 done

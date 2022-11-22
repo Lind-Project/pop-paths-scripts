@@ -15,5 +15,18 @@ cd trinity
 make
 cd ..
 
+#downloading the kernel
+wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz
+tar -xvf linux_5.11.0.orig.tar.gz 
+cd linux-5.11/
+sudo apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf lcov
+timeout 5s make menuconfig
+sudo cp ../pop-paths-scripts/pop_paths_scripts/extra_files/BIG_CONFIG.config ./.config
+sudo make -j 4
+sudo make modules_install
+sudo make install
+cd ..
+sudo cp pop-paths-scripts/pop_paths_scripts/extra_files/grub_in /etc/default/grub
+
 #enabling Selinux
 sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 1
