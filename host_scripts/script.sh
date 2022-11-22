@@ -2,7 +2,10 @@ sudo apt-get install cloud-image-utils
 
 cloud-localds user-data.img user-data
 
-# wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P /home/tbrigham
+if [$1 -eq 1]
+then
+    wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P /home/tbrigham
+fi
 
 qemu-img resize /home/tbrigham/jammy-server-cloudimg-amd64.img +128G
 
