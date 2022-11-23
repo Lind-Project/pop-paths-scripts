@@ -17,8 +17,6 @@ expect {
     }
 }
 
-interact
-wait
 sleep 1
 
 spawn bash ssh_command.sh 2
