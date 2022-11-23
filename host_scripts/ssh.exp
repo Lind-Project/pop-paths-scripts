@@ -10,20 +10,18 @@ expect {
         send "yes\r"
         expect "*?assword" {
             send "password\r"
-            interact
         }
     } 
     
     "*?assword" {
         send "password\r"
-        interact
     }
 
     "127.0.0.1" {
-        spawn ./ssh.exp $index
+        spawn sudo ./ssh.exp $index
     }
     
     "*?onnection refused" {
-        spawn ./ssh.exp $index
+        spawn sudo ./ssh.exp $index
     }
 }
