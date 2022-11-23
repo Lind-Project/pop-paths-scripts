@@ -20,5 +20,5 @@ expect {
     }
 
 }
-interact
+# interact
 EOF
