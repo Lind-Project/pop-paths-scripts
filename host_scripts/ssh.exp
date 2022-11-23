@@ -9,7 +9,7 @@ spawn bash ssh_command.sh $index
 expect {
     "yes/no" {
         send "yes\r"
-        expect "*?assword" {
+        expect "password" {
             send "password\r"
         }
     } 
