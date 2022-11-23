@@ -19,3 +19,7 @@ expect {
     }
 
 }
+
+"*?assword" {
+    send "password\r"
+}
