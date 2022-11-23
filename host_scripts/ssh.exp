@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+# logging into ssh
+
+set index [lindex $argv 0];
+
+spawn bash ssh_command.sh $index
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect "*?assword" {
+            send "password\r"
+            interact
+        }
+    } 
+    
+    "*?assword" {
+        send "password\r"
+        interact
+    }
+
+    "127.0.0.1" {
+        spawn ./ssh1.exp $index
+    }
+}
