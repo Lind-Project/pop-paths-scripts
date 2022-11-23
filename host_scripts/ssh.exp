@@ -20,3 +20,5 @@ expect {
     }
 
 }
+interact
+EOF
