@@ -179,7 +179,7 @@ commands = [
     "logger -f ./INFO.txt", #testing bsdutils
     "ps -aux", #testing procps
     "cat ./otherRandomTextFile.txt | grep 'hello'", #testing grep
-    "ls ./ | xargs cat",
+    # "ls ./ | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
     "sudo cron", 
     "whoami",
