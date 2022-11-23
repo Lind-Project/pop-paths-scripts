@@ -39,6 +39,7 @@ python_mount_script=os.getcwd()+"/pop-paths-scripts/pop_paths_scripts/scripts/mo
 print(os.getcwd())
 
 # just using the command line hits libss2
+# running commands through scripts for util-linux and bsdutils
 
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
@@ -149,7 +150,7 @@ commands = [
     "printenv",
     "pwd",
     "ls",
-    "sudo apt install lsb-core", #testing debconf
+    "sudo apt -y install lsb-core", #testing debconf
     "lsb_release -a",
     "which pwd", #testing debianutils
     "which cat", #testing debianutils
@@ -159,7 +160,7 @@ commands = [
     "mktemp",
     "savelog -Cdt ./log_file", #testing debianutils
     "run-parts --list --verbose --regex '^p.*d$' /etc",
-    "sudo apt  install attr", #testing debconf
+    "sudo apt -y install attr", #testing debconf
     "echo 'test' > test.txt",
     "setfattr -n user.comment -v 'this is a comment' test.txt", #testing libattr1
     "getfattr test.txt",
@@ -221,7 +222,7 @@ commands = [
     "echo 'VERBOSE=1' > ./test_config.conf",
     "sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
     "find / test.txt", #testing findutils
-    "sudo apt install mlocate", #testing debconf
+    "sudo apt -y install mlocate", #testing debconf
     "locate test.txt", #testing findutils
     "gcc {} -o script".format(script2), #testing libstdc++6 
     "./script", #testing libstdc++6 
@@ -240,6 +241,12 @@ commands = [
     "gpg --export joe@foo.bar > key.gpg",
     "gpgv --keyring ./key.gpg foo.txt.gpg",
     "su -c 'ls' fake_user",
+    "tabs", #testing ncurses-bin
+    "infocmp", 
+    "clear", 
+    "ncurses5-config --prefix", #testing libncurses(5)-dev
+    "ncurses5-config --bindir", 
+    "ncurses5-config --datadir", 
     "ping google.com -c 10", #here through the bottom of array for netbase
     "ping 8.8.8.8 -c 10",
     "curl google.com",
@@ -253,12 +260,6 @@ commands = [
     # Cleaning up
     "sudo rm -fr ./util-linux",
 ]
-
-### MANUAL COMMANDS ###
-
-# do a script command for util-linux and bsdutils
-# run make menuconfig on the kernel file to get ncurses-bin to hit
-
 
 
 count=0
