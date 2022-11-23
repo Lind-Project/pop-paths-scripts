@@ -18,10 +18,10 @@ expect {
     }
 
     "127.0.0.1" {
-        spawn sudo ./ssh.exp $index
+        send "sudo ./ssh.exp $index"
     }
     
     "*?onnection refused" {
-        spawn sudo ./ssh.exp $index
+        send "sudo ./ssh.exp $index"
     }
 }
