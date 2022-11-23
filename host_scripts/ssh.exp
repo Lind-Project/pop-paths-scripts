@@ -22,6 +22,6 @@ expect {
     }
     
     "*?onnection refused" {
-        send "sudo ./ssh.exp $index"
+        spawn "sudo ./ssh.exp $index"
     }
 }
