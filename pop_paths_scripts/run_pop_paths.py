@@ -45,7 +45,7 @@ commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "su -c 'ls' lind2",
-    "sudo ./passwd.exp", #testing passwd and lsb-base
+    "sudo ./pop-paths-scripts/pop_paths_scripts/passwd.exp", #testing passwd and lsb-base
     "sudo userdel lind2",
     "rm -r ./gpgTest",
     "mkdir ./gpgTest", #using mkdir to test coreutils
@@ -67,9 +67,9 @@ commands = [
     "grep x86_64-boot-uek.iso OracleLinux-R8-U6-Server-x86_64.checksum | sha256sum -c",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
-    "sudo ./libedit-20210910-3.1/configure",
-    "sudo make -C ./libedit-20210910-3.1",
-    "sudo make -C ./libedit-20210910-3.1 install",
+    "cd ./libedit-20210910-3.1 && sudo ./configure",
+    "cd ./libedit-20210910-3.1 && sudo make",
+    "cd ./libedit-20210910-3.1 && sudo make install",
     "./libedit-20210910-3.1/examples/fileman", # testing libedit2 -- THESE AREN'T AUTOMATED
     "./libedit-20210910-3.1/examples/tc1",
     "./libedit-20210910-3.1/examples/wtc1",
@@ -214,10 +214,10 @@ commands = [
     "vmstat -t",
     "w",
     "git clone https://github.com/util-linux/util-linux.git",
-    "./util-linux/autogen.sh",
-    "./util-linux/configure",
-    "make",
-    "make check-programs",
+    "cd ./util-linux && sudo ./autogen.sh",
+    "cd ./util-linux && sudo ./configure",
+    "cd ./util-linux && sudo make",
+    "cd ./util-linux && sudo make check-programs",
     "./tests/run.sh",
     "echo 'VERBOSE=1' > ./test_config.conf",
     "sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
