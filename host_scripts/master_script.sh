@@ -8,18 +8,18 @@ echo ""
 echo "SSHING 1" &&
 echo ""
 echo ""
-sudo bash ssh_command.sh 1 &&
-sleep 10 &&
+sudo bash ssh_command.sh 1
+sleep 
 
 echo ""
-echo "SSHING 2" &&
+echo "SSHING 2"
 echo ""
 echo ""
-sudo bash ssh_command.sh 2 &&
-sleep 10 &&
+sudo bash ssh_command.sh 2
+sleep 10
 
 echo ""
-echo "SSHING 3" &&
+echo "SSHING 3"
 echo ""
 echo ""
 sudo bash ssh_command.sh 3
