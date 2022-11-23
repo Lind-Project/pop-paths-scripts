@@ -19,7 +19,7 @@ cd ..
 wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz
 tar -xvf linux_5.11.0.orig.tar.gz 
 cd linux-5.11/
-sudo apt-get install --assume-yes libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf lcov
+sudo apt-get install --assume-yes libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf lcov expect
 timeout 5s make menuconfig
 sudo cp ../pop-paths-scripts/pop_paths_scripts/extra_files/BIG_CONFIG.config ./.config
 sudo make -j 4

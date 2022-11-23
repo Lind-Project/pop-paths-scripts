@@ -5,7 +5,7 @@ expect "*nam*" {
     send "Fake Name\r"
     
     expect "*address*" {
-        send "fake.name@fake_org.com"
+        send "fake.name@fake_org.com\r"
 
         expect "(O)kay/(Q)uit" {
             send "O\n"
