@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 
-spawn bash passwd_script.sh
+spawn bash ./pop-paths-scripts/pop_paths_scripts/passwd_script.sh
 expect "*password*" {
     send "pass\r"
 
