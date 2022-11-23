@@ -18,7 +18,7 @@ expect {
 }
 
 wait
-sleep 10
+sleep 1
 
 spawn bash ssh_command.sh 2
 expect {
@@ -36,7 +36,7 @@ expect {
 }
 
 wait
-sleep 10
+sleep 1
 
 spawn bash ssh_command.sh 3
 expect {
