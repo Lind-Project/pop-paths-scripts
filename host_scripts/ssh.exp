@@ -17,6 +17,7 @@ expect {
     }
 }
 
+interact
 wait
 sleep 1
 
