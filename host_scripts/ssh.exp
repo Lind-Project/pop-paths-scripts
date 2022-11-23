@@ -23,7 +23,7 @@ expect {
         spawn ./ssh.exp $index
     }
     
-    "Connection refused" {
+    "*?onnection refused" {
         spawn ./ssh.exp $index
     }
 }
