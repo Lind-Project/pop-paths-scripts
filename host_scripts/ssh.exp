@@ -2,7 +2,8 @@
 
 # logging into ssh
 
-set index [lindex $argv 0];
+# set index [lindex $argv 0];
+set index 1;
 
 spawn bash ssh_command.sh $index
 expect {
