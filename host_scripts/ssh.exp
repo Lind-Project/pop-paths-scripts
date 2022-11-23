@@ -2,9 +2,7 @@
 
 # logging into ssh
 
-set index [lindex $argv 0];
-
-spawn bash ssh_command.sh $index
+spawn bash ssh_command.sh 1
 expect {
     "yes/no" {
         send "yes\r"
@@ -14,11 +12,43 @@ expect {
             }
         }
     } 
-    
     "password" {
         send "password\r"
     }
+}
 
+spawn sleep 10
+
+spawn bash ssh_command.sh 2
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect {
+            "password" {
+                send "password\r"
+            }
+        }
+    } 
+    "password" {
+        send "password\r"
+    }
+}
+
+spawn sleep 10
+
+spawn bash ssh_command.sh 3
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect {
+            "password" {
+                send "password\r"
+            }
+        }
+    } 
+    "password" {
+        send "password\r"
+    }
 }
 
 interact
