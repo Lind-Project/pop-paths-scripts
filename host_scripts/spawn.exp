@@ -12,6 +12,22 @@ expect {
     "*?assword" {send "password\r"}
 }
 
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect "*?assword" {send "password\r"}
+    } 
+    
+    "*?assword" {send "password\r"}
+}
 
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect "*?assword" {send "password\r"}
+    } 
+    
+    "*?assword" {send "password\r"}
+}
 
 interact
