@@ -1,0 +1,20 @@
+#!/usr/bin/expect
+
+spawn bash gpg_script.sh
+expect "*nam*" {
+    send "Fake Name\r"
+    
+    expect "*address*" {
+        send "fake.name@fake_org.com"
+
+        expect "(O)kay/(Q)uit" {
+            send "O\n"
+
+            send "pass\r"
+            sleep 1
+            send "\r"
+            sleep 1
+            send "pass\r"
+        }
+    }
+}

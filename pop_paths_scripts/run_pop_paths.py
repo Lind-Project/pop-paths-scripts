@@ -229,6 +229,9 @@ commands = [
     "grep selinux /var/log/audit/audit.log", #testing grep
     "logsave -asv ./temp_log ls", #testing e2fsprogs
     "logsave -asv ./temp_log pwd",
+    "timeout 1s watch ls",
+    "timeout 1s man ls",
+    "yes | head -1 | sudo apt-get install dillo", #testing debconf
     "ping google.com -c 10", #here through the bottom of array for netbase
     "ping 8.8.8.8 -c 10",
     "curl google.com",
@@ -238,6 +241,7 @@ commands = [
     "nc -G 5 -z 8.8.8.8 80",
     "netstat -rlv",
 
+
     # Cleaning up
     "sudo rm -fr ./util-linux",
 ]
@@ -245,10 +249,7 @@ commands = [
 ### MANUAL COMMANDS ###
 
 # do a script command for util-linux and bsdutils
-# watch ls command to test procps
-# do a man command to test readline-common
 # run make menuconfig on the kernel file to get ncurses-bin to hit
-# do one manual apt to hit debconf
 # sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
 # sudo passwd lind2 -- to test base-passwd
 # sudo login wrong_user -- for libpam-runtime and util-linux and login
