@@ -10,11 +10,7 @@ expect "*nam*" {
         expect "*(O)kay/(Q)uit*" {
             send "O\n"
 
-            send "pass\r"
-            sleep 1
-            send "\r"
-            sleep 1
-            send "pass\r"
+            
         }
     }
 }
