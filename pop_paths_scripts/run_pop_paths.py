@@ -43,7 +43,8 @@ print(os.getcwd())
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
-    "sudo passwd lind2", #testing passwd and lsb-base
+    "su -c 'ls' lind2",
+    "sudo ./passwd.exp", #testing passwd and lsb-base
     "sudo userdel lind2",
     "rm -r ./gpgTest",
     "mkdir ./gpgTest", #using mkdir to test coreutils
@@ -232,6 +233,13 @@ commands = [
     "timeout 1s watch ls",
     "timeout 1s man ls",
     "yes | head -1 | sudo apt-get install dillo", #testing debconf
+    "echo 'Hello' > foo.txt",
+    "gpg --batch --gen-key ./pop-paths-scripts/pop_paths_scripts/extra_files/key_info", #testing gpg
+    "gpg --export joe@foo.bar",
+    "gpg --local-user joe@foo.bar --passphrase abc --sign foo.txt",
+    "gpg --export joe@foo.bar > key.gpg",
+    "gpgv --keyring ./key.gpg foo.txt.gpg",
+    "su -c 'ls' fake_user",
     "ping google.com -c 10", #here through the bottom of array for netbase
     "ping 8.8.8.8 -c 10",
     "curl google.com",
@@ -250,15 +258,7 @@ commands = [
 
 # do a script command for util-linux and bsdutils
 # run make menuconfig on the kernel file to get ncurses-bin to hit
-# sudo login lind2 -- need to run independently to test libpam-modules and libpam0g and util-linux and login
-# sudo passwd lind2 -- to test base-passwd
-# sudo login wrong_user -- for libpam-runtime and util-linux and login
-# Also need to gpg gen key, encrypt, decrypt
-#   gpg --gen-key
-#   gpg --export -a **EMAIL**
-#   gpg --local-user **EMAIL** --sign foo.txt
-#   gpg --export **EMAIL** > key.gpg
-#   gpgv --keyring ./key.gpg foo.txt.gpg
+
 
 
 count=0

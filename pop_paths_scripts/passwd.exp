@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+
+spawn bash gpg_script.sh
+expect "*password*" {
+    send "pass\r"
+
+    expect "*password*" {
+        send "pass\r"
+
+    }
+}
+
+interact
