@@ -73,9 +73,6 @@ commands = [
     "timeout 5s ./libedit-20210910-3.1/examples/fileman", # testing libedit2 
     "timeout 5s ./libedit-20210910-3.1/examples/tc1",
     "timeout 5s ./libedit-20210910-3.1/examples/wtc1",
-    "echo 'test' > ./gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
-    "gpg -r purple --encrypt ./gpg_test.txt",
-    "gpg --decrypt ./gpg_test.txt.gpg",
     "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
@@ -240,6 +237,9 @@ commands = [
     "gpg --local-user joe@foo.bar --passphrase abc --sign foo.txt",
     "gpg --export joe@foo.bar > key.gpg",
     "gpgv --keyring ./key.gpg foo.txt.gpg",
+    "echo 'test' > ./gpg_test.txt", #testing gpg -- ALSO NOT AUTOMATED
+    "gpg -r joe@foo.bar --encrypt ./gpg_test.txt",
+    "gpg --decrypt ./gpg_test.txt.gpg",
     "su -c 'ls' fake_user",
     "tabs", #testing ncurses-bin
     "infocmp", 
