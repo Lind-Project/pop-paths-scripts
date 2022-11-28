@@ -43,6 +43,15 @@ print(os.getcwd())
 
 commands = [
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
+    "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
+    "tar -xvf editline",
+    "cd ./libedit-20210910-3.1 && sudo ./configure",
+    "cd ./libedit-20210910-3.1 && sudo make",
+    "cd ./libedit-20210910-3.1 && sudo make install",
+    "sudo timeout 5s ./libedit-20210910-3.1/examples/fileman", # testing libedit2 
+    "sudo timeout 5s ./libedit-20210910-3.1/examples/tc1",
+    "sudo timeout 5s ./libedit-20210910-3.1/examples/wtc1",
+    "sudo curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
     "su -c 'ls' lind2",
     "sudo ./pop-paths-scripts/pop_paths_scripts/passwd.exp", #testing passwd and lsb-base
@@ -65,15 +74,6 @@ commands = [
     "sudo curl https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8 -o RPM-GPG-KEY-oracle",
     "gpg --quiet --keyid-format 0xlong --with-fingerprint RPM-GPG-KEY-oracle",
     "grep x86_64-boot-uek.iso OracleLinux-R8-U6-Server-x86_64.checksum | sha256sum -c",
-    "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
-    "tar -xvf editline",
-    "cd ./libedit-20210910-3.1 && sudo ./configure",
-    "cd ./libedit-20210910-3.1 && sudo make",
-    "cd ./libedit-20210910-3.1 && sudo make install",
-    "timeout 5s ./libedit-20210910-3.1/examples/fileman", # testing libedit2 
-    "timeout 5s ./libedit-20210910-3.1/examples/tc1",
-    "timeout 5s ./libedit-20210910-3.1/examples/wtc1",
-    "curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo chmod +x fztopng",
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png -f 'sin(z)'", #testing libslang2
     "sudo ./fztopng -x -8:8:#512 -y -2:2:#128 -o sin_hsv.png {}".format(function_slang),
