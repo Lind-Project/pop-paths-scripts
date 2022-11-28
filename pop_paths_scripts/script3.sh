@@ -19,7 +19,7 @@ sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 2 #still need 
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/pop_paths
 
 #trinity and ltp here
-sudo timeout 6h bash pop-paths-scripts/pop_paths_scripts/run_trinity.sh 
+timeout 6h bash pop-paths-scripts/pop_paths_scripts/run_trinity.sh 
 sudo timeout 6h bash pop-paths-scripts/pop_paths_scripts/run_ltp.sh 
 
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/full_data
