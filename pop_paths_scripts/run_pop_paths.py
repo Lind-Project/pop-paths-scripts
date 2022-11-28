@@ -49,7 +49,7 @@ commands = [
     "cd ./libedit-20210910-3.1 && sudo make",
     "cd ./libedit-20210910-3.1 && sudo make install",
     "sudo timeout 5s ./libedit-20210910-3.1/examples/fileman", # testing libedit2 
-    "sudo timeout 5s ./libedit-20210910-3.1/examples/tc1",
+    # "sudo timeout 5s ./libedit-20210910-3.1/examples/tc1",
     "sudo timeout 5s ./libedit-20210910-3.1/examples/wtc1",
     "sudo curl https://www.jedsoft.org/fun/complex/fztopng/fztopng -o ./fztopng", #getting script for libslang2
     "sudo adduser --disabled-password --gecos '' lind2", #testing libpam-modules and libpam0g and adduser
