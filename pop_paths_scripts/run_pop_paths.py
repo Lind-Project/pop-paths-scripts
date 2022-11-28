@@ -183,8 +183,8 @@ commands = [
     "sudo whoami",
     "rm ./tempFile.txt",
     "cat /etc/profile", #testing base-files
-    "logger `who`",
-    "logger `pwd`",
+    "sudo logger 'who'",
+    "sudo logger 'pwd'",
     "tail -3 /var/log/syslog",
     "hostname", #testing hostname
     "domainname",
