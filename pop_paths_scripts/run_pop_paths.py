@@ -42,6 +42,10 @@ print(os.getcwd())
 # running commands through scripts for util-linux and bsdutils
 
 commands = [
+    "cat /etc/profile", #testing base-files
+    "sudo logger 'who'",
+    "sudo logger 'pwd'",
+    "tail -3 /var/log/syslog",
     "sudo apt-get install -y libconfig-dev libedit-dev curl libreadline6-dev slsh",
     "sudo curl https://www.thrysoee.dk/editline/libedit-20210910-3.1.tar.gz --output ./editline",
     "tar -xvf editline",
@@ -182,10 +186,6 @@ commands = [
     "whoami",
     "sudo whoami",
     "rm ./tempFile.txt",
-    "cat /etc/profile", #testing base-files
-    "sudo logger 'who'",
-    "sudo logger 'pwd'",
-    "tail -3 /var/log/syslog",
     "hostname", #testing hostname
     "domainname",
     "dnsdomainname",
