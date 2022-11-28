@@ -276,7 +276,8 @@ elif argument == 1:
     commands = selinux_install
 
 for i, command in enumerate(commands[count:]):
-    print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
+    # print("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n")
+    os.system("echo '{}'".format("\n\n\nCOMMAND {}::\n".format(i + count) + command + "\n\n\n"))
     os.system(command)
     # input()
     time.sleep(.3)
