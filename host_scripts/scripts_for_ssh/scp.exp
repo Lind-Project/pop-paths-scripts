@@ -1,4 +1,4 @@
-#!/usr/bin/expect
+#!/usr/bin/expect -d
 
 spawn sudo scp -P 2222 -r 'ubuntu@localhost:/home/ubuntu/GCOV_DATA' /hdd/GCOV_DATA
 
