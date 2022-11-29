@@ -1,16 +1,16 @@
 #!/usr/bin/expect
 
-# set date [exec date --iso-8601=minutes]
-# spawn bash -c 'sudo scp -P 2222 -r "ubuntu@localhost:/home/ubuntu/GCOV_DATA" /hdd/GCOV_DATA/${date}'
-spawn bash -c 'sudo scp -P 2222 -r "ubuntu@localhost:/home/ubuntu/GCOV_DATA" /hdd/GCOV_DATA'
+set date [exec date --iso-8601=minutes]
+spawn bash -c 'sudo scp -P 2222 -r "ubuntu@localhost:/home/ubuntu/GCOV_DATA" /hdd/GCOV_DATA/${date}'
+# spawn bash -c 'sudo scp -P 2222 -r "ubuntu@localhost:/home/ubuntu/GCOV_DATA" /hdd/GCOV_DATA'
 
-# expect {
-#     "yes/no" {
-#         send "yes\r"
-#         expect "*?assword" {send "password\r"}
-#     } 
+expect {
+    "yes/no" {
+        send "yes\r"
+        expect "*?assword" {send "password\r"}
+    } 
     
-#     "*?assword" {send "password\r"}
-# }
+    "*?assword" {send "password\r"}
+}
 
 interact
