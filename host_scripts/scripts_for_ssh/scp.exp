@@ -7,7 +7,7 @@ spawn bash -c 'sudo scp -P 2222 -r "ubuntu@localhost:/home/ubuntu/GCOV_DATA" /hd
 expect {
     "*yes/no*" {
         send "yes\r"
-        expect "*?assword" {send "password\r"}
+        exp_continue
     } 
     
     "*?assword*" {send "password\r"}
