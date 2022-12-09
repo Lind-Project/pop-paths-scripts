@@ -30,12 +30,11 @@ then
     sleep 5
     sudo ssh-keygen -f "/home/tbrigham/.ssh/known_hosts" -R "[localhost]:2222"
     sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:2222"
-    echo "HIT HERE"
     # until sudo sshpass -p "password" ssh -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "sudo bash pop-paths-scripts/pop_paths_scripts/script3.sh"; do
     # sudo sshpass -p "password" scp -P 2222 -r 'ubuntu@localhost:/home/ubuntu/GCOV_DATA' /hdd/GCOV_DATA/$(date --iso-8601="minutes")
-    sudo ./scripts_for_ssh/scp.exp
+    sudo mkdir /hdd/GCOV_DATA/$(date --iso-8601="minutes")
+    sudo scp -r -i /home/tbrigham/key -o StrictHostKeyChecking=no -P 2222 ubuntu@localhost:/home/ubuntu/GCOV_DATA /hdd/GCOV_DATA/$(date --iso-8601="minutes")
     #     sleep 10
-    echo "HIT HERE TOO"
     # done
 fi
 
