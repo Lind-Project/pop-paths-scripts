@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 
-spawn bash ./ssh_command.sh 3
+spawn bash ./scripts_for_ssh/ssh_command.sh 3
 expect "*passphrase*" {
     send "password\r"
 }
