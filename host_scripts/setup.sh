@@ -9,4 +9,5 @@ echo ""
 echo "SSHING 2"
 echo ""
 echo ""
+sleep 30
 sudo bash scripts_for_ssh/ssh_command.sh 2
