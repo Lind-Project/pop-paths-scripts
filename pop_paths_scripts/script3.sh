@@ -11,7 +11,7 @@ mkdir GCOV_DATA/pop_paths
 mkdir GCOV_DATA/full_data
 
 #resetting the data
-sudo echo 0 > /sys/kernel/debug/gcov/reset
+sudo bash -c "echo 0 > /sys/kernel/debug/gcov/reset"
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh GCOV_DATA/blank_reset
 sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 2 #still need to do some automation here
 
