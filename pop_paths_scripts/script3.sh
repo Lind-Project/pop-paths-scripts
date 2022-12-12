@@ -1,25 +1,12 @@
-# Resetting all of the data and removing it from the system
-sudo rm -r GCOV_DATA
-sudo rm -r GCOV_DATA/blank_reset
-sudo rm -r GCOV_DATA/pop_paths
-sudo rm -r GCOV_DATA/full_data
+./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh
 
-#creating the directories for the data
-mkdir GCOV_DATA
-mkdir GCOV_DATA/blank_reset
-mkdir GCOV_DATA/pop_paths
-mkdir GCOV_DATA/full_data
-
-#resetting the data
-sudo bash -c "echo 0 > /sys/kernel/debug/gcov/reset"
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh GCOV_DATA/blank_reset
-sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 2 #still need to do some automation here
+sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 2 
 
 #collecting the pop paths data
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/pop_paths
 
-#trinity and ltp here
-timeout 6h bash pop-paths-scripts/pop_paths_scripts/run_trinity.sh 
-sudo timeout 6h bash pop-paths-scripts/pop_paths_scripts/run_ltp.sh 
-
-sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/full_data
+# call another script that runs trinity and then calls other scripts
+# so that if we fail during trinity, we can easily pick back up where we left off
+# by running the command in the sequence again
+./pop-paths-scripts/pop_paths_scripts/script3/run_trinity_checkpoint.sh
