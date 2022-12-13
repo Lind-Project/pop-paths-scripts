@@ -21,8 +21,10 @@ elif [ $1 -eq 3 ]
 then
     sudo ssh-keygen -f "/home/tbrigham/.ssh/known_hosts" -R "[localhost]:2222"
     sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:2222"
+    ls -ahl /hdd > /home/tbrigham/log1.txt
     # until sudo sshpass -p "password" ssh -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "sudo bash pop-paths-scripts/pop_paths_scripts/script3.sh"; do
     sudo ssh -i /home/tbrigham/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "bash pop-paths-scripts/pop_paths_scripts/script3.sh"
+    ls -ahl /hdd > /home/tbrigham/log2.txt
     #     sleep 10
     # done
 elif [ $1 -eq 4 ]
@@ -34,7 +36,9 @@ then
     # sudo sshpass -p "password" scp -P 2222 -r 'ubuntu@localhost:/home/ubuntu/GCOV_DATA' /hdd/GCOV_DATA/$(date --iso-8601="minutes")
     sudo mkdir /hdd/GCOV_DATA/$(date --iso-8601="minutes")
     sudo scp -r -i /home/tbrigham/key -o StrictHostKeyChecking=no -P 2222 ubuntu@localhost:/home/ubuntu/GCOV_DATA /hdd/GCOV_DATA/$(date --iso-8601="minutes")
+    ls -ahl /hdd > /home/tbrigham/log3.txt
     sudo ssh -i /home/tbrigham/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "bash ./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh"
+    ls -ahl /hdd > /home/tbrigham/log4.txt
     #     sleep 10
     # done
 fi
