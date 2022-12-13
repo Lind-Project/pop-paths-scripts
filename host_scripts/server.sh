@@ -5,9 +5,9 @@ cloud-localds server_files/user-data.img server_files/user-data
 if [ $1 -eq 1 ]
 then
     echo "DOWNLOADING"
-    wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P /home/tbrigham
+    wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P /hdd
 fi
 
-qemu-img resize /home/tbrigham/jammy-server-cloudimg-amd64.img 64G
+qemu-img resize /hdd/jammy-server-cloudimg-amd64.img 64G
 
-qemu-system-x86_64 -machine accel=kvm -cpu host -drive file=/home/tbrigham/jammy-server-cloudimg-amd64.img,format=qcow2 -drive file=server_files/user-data.img,format=raw -m 8G -display none -monitor stdio -net nic,model=e1000 -net user,hostfwd=tcp::2222-:22 -smp cores=14,threads=1,sockets=1
+qemu-system-x86_64 -machine accel=kvm -cpu host -drive file=/hdd/jammy-server-cloudimg-amd64.img,format=qcow2 -drive file=server_files/user-data.img,format=raw -m 8G -display none -monitor stdio -net nic,model=e1000 -net user,hostfwd=tcp::2222-:22 -smp cores=14,threads=1,sockets=1
