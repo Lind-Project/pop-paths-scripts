@@ -1,4 +1,4 @@
-./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh
+sudo bash ./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh
 
 sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh GCOV_DATA/blank_reset
 sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 2 

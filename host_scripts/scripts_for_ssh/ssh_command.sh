@@ -34,7 +34,7 @@ then
     # sudo sshpass -p "password" scp -P 2222 -r 'ubuntu@localhost:/home/ubuntu/GCOV_DATA' /hdd/GCOV_DATA/$(date --iso-8601="minutes")
     sudo mkdir /hdd/GCOV_DATA/$(date --iso-8601="minutes")
     sudo scp -r -i /home/tbrigham/key -o StrictHostKeyChecking=no -P 2222 ubuntu@localhost:/home/ubuntu/GCOV_DATA /hdd/GCOV_DATA/$(date --iso-8601="minutes")
-    sudo ssh -i /home/tbrigham/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh"
+    sudo ssh -i /home/tbrigham/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "bash ./pop-paths-scripts/pop_paths_scripts/script3/reset_data.sh"
     #     sleep 10
     # done
 fi
