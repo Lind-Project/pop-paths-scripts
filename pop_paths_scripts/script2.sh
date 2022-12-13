@@ -31,7 +31,7 @@ cd ..
 sudo cp pop-paths-scripts/pop_paths_scripts/extra_files/grub_in /etc/default/grub
 
 # deleting the kernel file (because it is obscenely large)
-sudo rm -r /home/ubuntu/linux-5.11
+# sudo rm -r /home/ubuntu/linux-5.11
 
 #enabling Selinux
 sudo python3 pop-paths-scripts/pop_paths_scripts/run_pop_paths.py 1
