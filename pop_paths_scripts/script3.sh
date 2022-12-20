@@ -13,4 +13,4 @@ ls -ahl /hdd > /home/tbrigham/log6.txt
 # call another script that runs trinity and then calls other scripts
 # so that if we fail during trinity, we can easily pick back up where we left off
 # by running the command in the sequence again
-./pop-paths-scripts/pop_paths_scripts/script3/run_trinity_checkpoint.sh
+bash ./pop-paths-scripts/pop_paths_scripts/script3/run_trinity_checkpoint.sh
