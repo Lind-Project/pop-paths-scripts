@@ -14,5 +14,5 @@ echo "Done"
 # client
 echo "Init Server..."
 screen -mdS "client_screen"
-screen -S "client_screen" -p 0 -X stuff "cd host_scripts && echo $1 | sudo -S  bash ./setup.sh && echo $1 | sudo -S  bash ./pop_paths.sh ^M"
+screen -S "client_screen" -p 0 -X stuff "sleep 100 && cd host_scripts && echo $1 | sudo -S  bash ./setup.sh && echo $1 | sudo -S  bash ./pop_paths.sh ^M"
 echo "Done"
