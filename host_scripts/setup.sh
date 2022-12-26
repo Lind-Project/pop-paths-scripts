@@ -10,4 +10,3 @@ echo "SSHING 2"
 echo ""
 echo ""
 sudo ./scripts_for_ssh/ssh2.exp
-sleep 40
