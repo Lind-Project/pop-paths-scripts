@@ -217,7 +217,7 @@ commands = [
     "cd ./util-linux && sudo make check-programs",
     "./tests/run.sh",
     "echo 'VERBOSE=1' > ./test_config.conf",
-    "sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
+    "echo -ne '\n' > sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
     "find / test.txt", #testing findutils
     "sudo apt -y install mlocate", #testing debconf
     "locate test.txt", #testing findutils
