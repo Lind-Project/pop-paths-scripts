@@ -8,17 +8,19 @@ sudo make all
 sudo make install
 cd ..
 
-#installing trinity
+# installing trinity
 git clone https://github.com/kernelslacker/trinity.git
 cd trinity
 ./configure
 make
 cd ..
 
-#downloading the kernel
-wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz
-tar -xvf linux_5.11.0.orig.tar.gz 
-cd linux-5.11/
+# downloading the kernel
+# wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz -O kernel.tar.gz
+wget $1 -O kernel.tar.gz
+mkdir kernel_out
+tar -xvf kernel.tar.gz --strip 1 -C kernel_out
+cd kernel_out/
 sudo apt-get install --assume-yes libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf lcov expect
 
 # making the kernel

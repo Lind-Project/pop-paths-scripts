@@ -7,6 +7,7 @@
 ########################################################
 
 # to run this program, run it in bash with sudo permissions
+# the first argument should be the link to the kernel which we want to use
 
 # to monitor progress, run the following command formatted to your situation
 # sudo screen -r [client_screen  /  server_screen]
@@ -28,7 +29,7 @@ echo ""
 # client
 echo "Init Server..."
 screen -mdS "client_screen"
-screen -S "client_screen" -p 0 -X stuff "sleep 140 && cd host_scripts && bash ./setup.sh && sleep 240 && bash ./pop_paths.sh ^M"
+screen -S "client_screen" -p 0 -X stuff "sleep 140 && cd host_scripts && bash ./setup.sh $1 && sleep 240 && bash ./pop_paths.sh ^M"
 echo "Done. Info below."
 sudo ls -laR /var/run/screen | grep "client"
 echo ""
