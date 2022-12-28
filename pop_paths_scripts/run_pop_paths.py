@@ -134,9 +134,10 @@ commands = [
     "bash -c 'echo helloThere'",
     "sudo apt-get -y install cpp-8",  #using apt command to test dpkg and apt
     "sudo apt-get -y remove cpp-8",
+    "mkdir fuzzing",
     "tar -zcvf ./tarred_information.tar.gz ./fuzzing", #using tar gz to test zlib1g and tar and gzip
     "cat 'hellohellohellohellohello\n this is linux and I really like the operating system\nit is just interesting that it is taking so long to fuzz it' > ./info.txt", #testing lsb-base
-    "sed 's/linux/unix' ./info.txt", #testing sed
+    "sed 's/linux/unix/' ./info.txt", #testing sed
     "sed 's/hello/aloha/2' ./info.txt",
     "md5sum ./info.txt",
     "cksum ./info.txt",
@@ -179,6 +180,7 @@ commands = [
     "rm ./logfile.0",
     "logger -f ./INFO.txt", #testing bsdutils
     "ps -aux", #testing procps
+    "echo 'what are we doing here?\nWe are getting data!\nhello' > ./otherRandomTextFile.txt",
     "cat ./otherRandomTextFile.txt | grep 'hello'", #testing grep
     # "ls ./ | xargs cat",
     "test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )",
@@ -195,7 +197,6 @@ commands = [
     "last",
     "sudo lastb",
     "last -n 5",
-    "cat ./otherRandomTextFile.txt | grep 'hello'", #testing grep
     "ps -aux | grep 'firefox'", #testing grep and procps
     "free",
     "free -hl -c 3",
@@ -215,10 +216,9 @@ commands = [
     "cd ./util-linux && sudo ./configure",
     "cd ./util-linux && sudo make",
     "cd ./util-linux && sudo make check-programs",
-    "./tests/run.sh",
     "echo 'VERBOSE=1' > ./test_config.conf",
     "echo -ne '\n' > sudo ucf ./test_config.conf /etc/ucf.conf", # testing ucf
-    "find / test.txt", #testing findutils
+    "sudo find / -name 'test.txt'", #testing findutils
     "sudo apt -y install mlocate", #testing debconf
     "locate test.txt", #testing findutils
     "gcc {} -o script".format(script2), #testing libstdc++6 
@@ -252,8 +252,8 @@ commands = [
     "curl google.com",
     "curl -X POST 'google.com'",
     "wget http://localhost:8080/index.html",
-    "nc -G 5 -z 125.0.0.1 20-80",
-    "nc -G 5 -z 8.8.8.8 80",
+    "nc localhost 1299",
+    "timeout 5 nc -v -n 8.8.8.8 1-1000",
     "netstat -rlv",
 
 
