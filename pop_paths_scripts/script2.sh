@@ -17,7 +17,7 @@ cd ..
 
 # downloading the kernel
 # wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz -O kernel.tar.gz
-wget $1 -O kernel.tar.gz
+wget $(cat pop-paths-scripts/kernel_link.txt) -O kernel.tar.gz
 mkdir kernel_out
 tar -xvf kernel.tar.gz --strip 1 -C kernel_out
 cd kernel_out/
@@ -26,9 +26,9 @@ sudo apt-get install --assume-yes libncurses-dev flex bison openssl libssl-dev d
 # making the kernel
 timeout 5s make menuconfig
 sudo cp ../pop-paths-scripts/pop_paths_scripts/extra_files/BIG_CONFIG.config ./.config
-sudo make -j 4
-sudo make modules_install
-sudo make install
+sudo make -j $(nproc)
+sudo make modules_install -j $(nproc)
+sudo make install -j $(nproc)
 cd ..
 sudo cp pop-paths-scripts/pop_paths_scripts/extra_files/grub_in /etc/default/grub
 

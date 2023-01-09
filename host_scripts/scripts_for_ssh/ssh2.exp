@@ -1,8 +1,6 @@
 #!/usr/bin/expect
 
-set link [lindex $argv 0];
-
-spawn bash ./scripts_for_ssh/ssh_command.sh 2 $link
+spawn bash ./scripts_for_ssh/ssh_command.sh 2 
 expect "*passphrase*" {
     send "password\r"
 }

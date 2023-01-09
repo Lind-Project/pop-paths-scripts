@@ -9,4 +9,4 @@ echo ""
 echo "SSHING 2"
 echo ""
 echo ""
-sudo ./scripts_for_ssh/ssh2.exp $1
+sudo ./scripts_for_ssh/ssh2.exp
