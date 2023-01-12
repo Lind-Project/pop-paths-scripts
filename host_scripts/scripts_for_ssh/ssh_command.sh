@@ -4,7 +4,7 @@ then
     sudo ssh-keygen -f "/home/tbrigham/.ssh/known_hosts" -R "[localhost]:2222"
     sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:2222"
     # until sudo sshpass -p "password" ssh -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "git clone https://github.com/Lind-Project/pop-paths-scripts.git && bash pop-paths-scripts/pop_paths_scripts/script1.sh"; do
-    ssh-keygen -N "password" -f /home/tbrigham/key <<<y
+    ssh-keygen -N "" -f /home/tbrigham/key <<<y
     sudo sshpass -p "password" ssh-copy-id -i /home/tbrigham/key.pub -p 2222 -o StrictHostKeyChecking=no ubuntu@localhost
     sudo ssh -i /home/tbrigham/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "git clone https://github.com/Lind-Project/pop-paths-scripts.git && bash pop-paths-scripts/pop_paths_scripts/script1.sh"
     #     sleep 10
