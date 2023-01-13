@@ -30,8 +30,8 @@ sudo make -j $(nproc)
 sudo make modules_install -j $(nproc)
 sudo make install -j $(nproc)
 cd ..
+echo $(python3 ./pop-paths-scripts/pop_paths_scripts/get_kernel_name.py) >> pop-paths-scripts/pop_paths_scripts/extra_files/grub_in
 sudo cp pop-paths-scripts/pop_paths_scripts/extra_files/grub_in /etc/default/grub
-echo $(python ./pop-paths-scripts/pop_paths_scripts/get_kernel_name.py) >> /etc/default/grub
 sudo update-grub
 
 # deleting the kernel file (because it is obscenely large)
