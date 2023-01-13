@@ -6,4 +6,4 @@ output = subprocess.getoutput("""sudo grub-mkconfig | grep -iE "menuentry 'Ubunt
 
 for line in output.split("\n"):
     if gcov_name in line:
-        print(line)
+        print(line[line.index("'") + 1 : line.index("'", line.index("'") + 1)])
