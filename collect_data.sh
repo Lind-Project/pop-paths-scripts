@@ -13,7 +13,7 @@
 # sudo screen -r [client_screen  /  server_screen]
 # screen_id is the number before the period wh
 
-# clean up
+# removing the old server file if we find it in the specified directory
 echo "Init Environment..."
 sudo rm -f /hdd/jammy-server-cloudimg-amd64.img  || true
 echo "Done"

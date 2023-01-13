@@ -2,9 +2,10 @@ echo ""
 echo "SSHING 3"
 echo ""
 echo ""
-sudo ./scripts_for_ssh/ssh3.exp
+sudo bash ./scripts_for_ssh/ssh_command.sh 3
+
 echo ""
 echo "RETRIEVING FOLDERS"
 echo ""
 echo ""
-sudo ./scripts_for_ssh/ssh4.exp
+sudo bash ./scripts_for_ssh/ssh_command.sh 4
