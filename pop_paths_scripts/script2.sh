@@ -31,6 +31,7 @@ sudo make modules_install -j $(nproc)
 sudo make install -j $(nproc)
 cd ..
 sudo cp pop-paths-scripts/pop_paths_scripts/extra_files/grub_in /etc/default/grub
+sudo update-grub
 
 # deleting the kernel file (because it is obscenely large)
 # sudo rm -r /home/ubuntu/linux-5.11
