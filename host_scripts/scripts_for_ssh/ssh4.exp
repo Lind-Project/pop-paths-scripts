@@ -1,8 +1,0 @@
-#!/usr/bin/expect
-
-spawn bash ./scripts_for_ssh/ssh_command.sh 4
-expect "*passphrase*" {
-    send "password\r"
-}
-
-interact
