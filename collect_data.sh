@@ -30,7 +30,7 @@ echo ""
 # client
 echo "Init Server..."
 screen -mdS "client_screen"
-screen -S "client_screen" -p 0 -X stuff "sleep 300 && cd host_scripts && bash ./setup.sh && sleep 300 && bash ./pop_paths.sh ^M"
+screen -S "client_screen" -p 0 -X stuff "sudo bash host_scripts/run_client.sh^M"
 echo "Done. Info below."
 sudo ls -laR /var/run/screen | grep "client"
 echo ""
