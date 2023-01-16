@@ -7,11 +7,12 @@
 ########################################################
 
 # to run this program, run it in bash with sudo permissions
-# the first argument should be the link to the kernel which we want to use
+# there is a text file in the same directory as this file called kernel_link.txt 
+# please put the link to the kernel version that you would like to use in that file
+
 
 # to monitor progress, run the following command formatted to your situation
 # sudo screen -r [client_screen  /  server_screen]
-# screen_id is the number before the period wh
 
 # removing the old server file if we find it in the specified directory
 echo "Init Environment..."
