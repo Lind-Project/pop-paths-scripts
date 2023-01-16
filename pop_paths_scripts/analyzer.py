@@ -1,4 +1,4 @@
-#Author: Tristan Brigham (TristanB22) 
+# Author: Tristan Brigham (TristanB22) 
 """
 This program generates a report from kernel areas that are triggered
 by an application. It prints out the lines of each source file that are

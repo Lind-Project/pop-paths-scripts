@@ -1,12 +1,24 @@
+'''
+
+    This program will walk through the pop paths data files that exist
+    from the genhtml command and produce a dataframe with all of the info
+    for each path.
+
+'''
+
 from doctest import master
 import os
 import numpy as np
 import pandas as pd 
 
+# this is the directory that all of the data is housed in on the computer
 master_directory="~/Desktop/nr_data/nr_pop_paths"
+
 first_string="nr_pop_paths"
 second_string="nr_reachable"
 third_string="r_reachable"
+
+# the substring that holds the data in the html files
 substring="class=\"headerCovTableEntry\">"
 master_array=[]
 
@@ -47,7 +59,7 @@ for folder in dir_list:
                     error = error + 1
                     print("MISSING:: {}".format(name.replace(second_string, third_string)))
 
-# print(master_array)
+
 print("ERROR: {}".format(error))
 new_arr=[]
 
