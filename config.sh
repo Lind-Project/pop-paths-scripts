@@ -6,6 +6,11 @@
 # the second is the link to the kernel that we want to run the pop paths on
 # rerun this script with new arguments to overwrite the current configuration
 
-echo $1 > ./directory.txt
+if [[ $# -eq 2 ]]
+then
+    echo $1 > ./directory.txt
 
-echo $2 > ./kernel_link.txt
+    echo $2 > ./kernel_link.txt 
+else
+    echo "Not the correct amount of arguments"
+fi
