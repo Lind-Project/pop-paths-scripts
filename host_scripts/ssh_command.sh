@@ -43,6 +43,9 @@ then
     sleep 5
     sudo ssh-keygen -f "/home/tbrigham/.ssh/known_hosts" -R "[localhost]:2222"
     sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:2222"
+
+    # create a holding directory if it hasn't been created yet
+    sudo mkdir -p $(cat ../directory.txt)/GCOV_DATA;
     
     # create a ../directory for holding our data
     sudo mkdir $(cat ../directory.txt)/GCOV_DATA/$(date --iso-8601="minutes")
