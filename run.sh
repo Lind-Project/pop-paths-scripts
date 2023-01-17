@@ -7,16 +7,14 @@
 ########################################################
 
 # to run this program, run it in bash with sudo permissions
-# there is a text file in the same directory as this file called kernel_link.txt 
-# please put the link to the kernel version that you would like to use in that file
-
+# make sure that you have run the config.sh file before running this file
 
 # to monitor progress, run the following command formatted to your situation
 # sudo screen -r [client_screen  /  server_screen]
 
 # removing the old server file if we find it in the specified directory
 echo "Init Environment..."
-sudo rm -f /hdd/jammy-server-cloudimg-amd64.img  || true
+sudo rm -f $(cat directory.txt)/jammy-server-cloudimg-amd64.img  || true
 echo "Done"
 
 # server

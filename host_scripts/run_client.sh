@@ -13,4 +13,4 @@ echo ""
 echo "DELETING KVM AND CREATED FILES"
 echo ""
 echo ""
-sudo rm -f /hdd/jammy-server-cloudimg-amd64.img  || true
+sudo rm -f $(cat directory.txt)/jammy-server-cloudimg-amd64.img  || true

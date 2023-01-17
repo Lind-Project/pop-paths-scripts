@@ -10,11 +10,11 @@ then
 
     # download the server image
     echo "DOWNLOADING"
-    wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P /hdd
+    wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -P $(cat directory.txt)
 fi
 
 # resize the image
-qemu-img resize /hdd/jammy-server-cloudimg-amd64.img 64G
+qemu-img resize $(cat directory.txt)/jammy-server-cloudimg-amd64.img 64G
 
 # start the kvm 
-qemu-system-x86_64 -machine accel=kvm -cpu host -drive file=/hdd/jammy-server-cloudimg-amd64.img,format=qcow2 -drive file=server_files/user-data.img,format=raw -m 8G -display none -monitor stdio -net nic,model=e1000 -net user,hostfwd=tcp::2222-:22 -smp cores=14,threads=1,sockets=1
+qemu-system-x86_64 -machine accel=kvm -cpu host -drive file=$(cat directory.txt)/jammy-server-cloudimg-amd64.img,format=qcow2 -drive file=server_files/user-data.img,format=raw -m 8G -display none -monitor stdio -net nic,model=e1000 -net user,hostfwd=tcp::2222-:22 -smp cores=14,threads=1,sockets=1
