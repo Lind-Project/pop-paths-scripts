@@ -41,4 +41,4 @@ The client side is like so:
 - exfiltrate the data to the directory that was specified by the config file
 - delete the image file
 
-The data file will be time stamped 
+The data file will be time stamped and inside there will be 3 files containing the blank reset data, the pop paths data, and the full data. To visualize this in a browser, simply run `genhtml ./kernel.info` when you are in the data directory that you want to visualize and then open the resulting _index.html_ file.
