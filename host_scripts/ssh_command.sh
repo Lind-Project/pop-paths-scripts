@@ -44,15 +44,21 @@ then
     sudo ssh-keygen -f "/home/tbrigham/.ssh/known_hosts" -R "[localhost]:2222"
     sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:2222"
 
+    echo "Making the directory for the data"
+
     # create a holding directory if it hasn't been created yet
     sudo mkdir -p $(cat ../directory.txt)/GCOV_DATA;
     
     # create a ../directory for holding our data
     sudo mkdir $(cat ../directory.txt)/GCOV_DATA/$(date --iso-8601="minutes")
 
+    echo "Retrieving the data"
+
     # retrieve the data from the kvm machine
     sudo scp -r -i $(cat ../directory.txt)/key -o StrictHostKeyChecking=no -P 2222 ubuntu@localhost:/home/ubuntu/GCOV_DATA $(cat ../directory.txt)/GCOV_DATA/$(date --iso-8601="minutes")
     
+    echo "Zero the Data"
+
     # zero-out all of the data in the kernel
     sudo ssh -i $(cat ../directory.txt)/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "bash ./pop-paths-scripts/pop_paths_scripts/gcov_data_helpers/reset_data.sh"
 fi
