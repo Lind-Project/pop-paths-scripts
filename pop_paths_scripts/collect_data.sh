@@ -14,3 +14,6 @@ sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/pop_path
 # so that if we fail during trinity, we can easily pick back up where we left off
 # by running the command in the sequence again
 bash ./pop-paths-scripts/pop_paths_scripts/gcov_data_helpers/run_trinity_checkpoint.sh
+
+# generate report
+sudo bash pop-paths-scripts/pop_paths_scripts/makeReport.sh ./GCOV_DATA/full_data
