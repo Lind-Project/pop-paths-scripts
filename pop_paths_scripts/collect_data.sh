@@ -1,3 +1,5 @@
+export LTP_TIMEOUT_MUL=2
+
 # reset the gcov data
 sudo bash ./pop-paths-scripts/pop_paths_scripts/gcov_data_helpers/reset_data.sh
 
