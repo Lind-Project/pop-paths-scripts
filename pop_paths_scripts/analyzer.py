@@ -15,12 +15,12 @@ def main(argv):
    try:
       opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
    except getopt.GetoptError:
-      print 'analyzer.py -i <coverage.info> -o <outputfile>'
+      print('analyzer.py -i <coverage.info> -o <outputfile>')
       sys.exit(2)
 
    for opt, arg in opts:
       if opt == '-h':
-         print 'analyzer.py -i <coverage.info> -o <outputfile>'
+         print('analyzer.py -i <coverage.info> -o <outputfile>')
          sys.exit()
       elif opt in ("-i", "--ifile"):
          inputfile = arg
@@ -34,7 +34,7 @@ def main(argv):
      infile.close()
      outfile.close()
    else:
-     print "File: ", inputfile, " does not exist!"
+     print("File: ", inputfile, " does not exist!")
      sys.exit(2)
 
 """
@@ -97,18 +97,17 @@ def kernel_usage(infile, outfile):
         da_values.clear()
 
 
+    print(usage_dict)
+
     
-    for sf,da in usage_dict.iteritems():
+    for sf,da in usage_dict.items():
       if(da):
-        outfile.write(sf+'
-')
+        outfile.write(sf+'\n')
         da_sorted = sorted(da)
         for lines in da_sorted:
-          outfile.write('%d
-'%lines)
+          outfile.write('{}\n'.format(lines))
          
-        outfile.write('
-')
+        outfile.write('\n')
 
     pass
 
