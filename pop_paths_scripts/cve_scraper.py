@@ -42,7 +42,7 @@ for date, hash_num in dict.items():
         continue
     cve_date = date
     url_diff = 'https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/diff/?id={}'.format(ids)
-    dirs = r'\Users\jkoer\Desktop\Cooper\lind_cont\diff-{kern}'.format(kern)
+    dirs = r'/home/lind/lind_project/lind/pop-paths-scripts/pop_paths_scripts/diff-{kern}'.format(kern)
     if not os.path.exists(dirs):
         os.makedirs(dirs)
     filepath = r'{dir}\{cve_date}.txt'.format(cve_date)
