@@ -1,8 +1,8 @@
 import sys, getopt, os, json
 
-#this is just a temporary path name, just uncomment the two lines below to use a command line argument for the pathname
+#this is just a temporary path name, just uncomment the line below to use a command line argument for the pathname or hardcode a pathname to the variable pathname before running
 #pathname = sys.argv[1]
-pathname = r'\Users\jkoer\Desktop\Cooper\lind_cont\pop_paths_data.txt'
+#pathname =
 filename = os.path.basename(pathname)
 
 path_lines = {}

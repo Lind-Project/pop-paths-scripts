@@ -37,7 +37,8 @@ for date, hash_num in dict.items():
         continue
     cve_date = date
     url2 = f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id={ids}"
-    dir = fr'\Users\jkoer\Desktop\Cooper\lind_cont\diff-{kern}'
+    #before running, set dir to the directory path you want to scrape all the diffs into
+    #dir = 
     if not os.path.exists(dir):
         os.makedirs(dir)
     filepath = fr'{dir}\{cve_date}.txt'
