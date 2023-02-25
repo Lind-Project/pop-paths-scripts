@@ -1,11 +1,13 @@
 import os
 import json
-directory = r'C:\Users\jkoer\Desktop\Cooper\lind_cont\diff-5.15\\'
+#add direcotry path that contains all the patch files
+#directory =r''
 result = ""
-with open (r'C:\Users\jkoer\Desktop\Cooper\lind_cont\path_lines.json', 'r') as file:
+#add path to the other dictionaries
+#with open (r'', 'r') as file:
     path_lines = json.load(file)
     
-with open (r'C:\Users\jkoer\Desktop\Cooper\lind_cont\cve_dict.json', 'r') as file2:
+#with open (r'', 'r') as file2:
     cve_dict = json.load(file2)
 
 #This bottom code should be run to get rid of extra new lines at the end of the patch files
@@ -139,7 +141,7 @@ common_dict = matches
 keys_to_find = cleaner_matching_keys.keys()
 matching_files_and_line = {k: v for k, v in inter_d.items() if k in keys_to_find}
 
-#loop through all the line nums and add teh ones that match between the patch files and the pop paths to a dictionary
+#loop through all the line nums and add the ones that match between the patch files and the pop paths to a dictionary
 matching_final = {}
 for key1, value1 in matching_files_and_line.items():
     for key2, value2 in path_lines.items():
