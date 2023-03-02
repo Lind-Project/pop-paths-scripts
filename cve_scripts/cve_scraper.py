@@ -22,18 +22,18 @@ soup = BeautifulSoup(html, "html.parser")
 
 cards = soup.find_all("div", class_="cve-card v-card v-sheet theme--light")
 
-dict = {}
+d = {}
 for card in cards:
     cve_date = card.find("span",class_="headline").text.strip()
     kern_hash = card.find("span",class_="mono").text.strip()
     blurb = card.find("p").text.strip()
-    dict[cve_date] = []
-    dict[cve_date].append(kern_hash)
-    dict[cve_date].append(blurb)
+    d[cve_date] = []
+    d[cve_date].append(kern_hash)
+    d[cve_date].append(blurb)
 with open("cve_dict.json", "w") as f:
-    json.dump(dict, f)
+    json.dump(d, f)
 
-for date, hash_num in dict.items():
+for date, hash_num in d.items():
     ids = hash_num[0]
     if ids == "":
         continue
