@@ -27,7 +27,9 @@ for card in cards:
     cve_date = card.find("span",class_="headline").text.strip()
     kern_hash = card.find("span",class_="mono").text.strip()
     blurb = card.find("p").text.strip()
-    dict[cve_date] = (kern_hash, blurb)
+    dict[cve_date] = []
+    dict[cve_date].append(kern_hash)
+    dict[cve_date].append(blurb)
 with open("cve_dict.json", "w") as f:
     json.dump(dict, f)
 
