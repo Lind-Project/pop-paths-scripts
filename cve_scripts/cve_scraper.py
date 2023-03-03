@@ -3,7 +3,6 @@ import wget
 import json, requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
 
 #uncomment these two lines to insert any kernel version from command line or just change url manually
 #kern = sys.argv[1]
