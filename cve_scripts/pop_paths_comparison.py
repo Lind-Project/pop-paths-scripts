@@ -37,6 +37,30 @@ for filename in os.listdir(directory):
                         ind = components.index("include")
                     elif "drm" in components:
                         ind = components.index("drm")
+                    elif "kernel" in components:
+                        ind = components.index("kernel")
+                    elif "fs" in components:
+                        ind = components.index("fs")
+                    elif "sound" in components:
+                        ind = components.index("sound")
+                    elif "lib" in components:
+                        ind = components.index("lib")
+                    elif "mm" in components:
+                        ind = components.index("mm")
+                    elif "crypto" in components:
+                        ind = components.index("crypto")
+                    elif "net" in components:
+                        ind = components.index("net")
+                    elif "security" in components:
+                        ind = components.index("security")
+                    elif "drivers" in components:
+                        ind = components.index("drivers")
+                    elif "arch" in components:
+                        ind = components.index("arch")
+                    elif "block" in components:
+                        ind = components.index("block")
+                    elif "ipc" in components:
+                        ind = components.index("ipc")
                     result = "/".join(components[ind:])
                     result_split = result.split(" ")
                     name = result_split[0]
@@ -95,10 +119,34 @@ for filename in os.listdir(directory):
             for i, line in enumerate(content.splitlines()):
                 if(line.startswith("diff ")):
                         components = line.split("/")
-                        if "include" in components:
+                        if "include" in components: 
                             ind = components.index("include")
                         elif "drm" in components:
                             ind = components.index("drm")
+                        elif "kernel" in components:
+                            ind = components.index("kernel")
+                        elif "fs" in components:
+                            ind = components.index("fs")
+                        elif "sound" in components:
+                            ind = components.index("sound")
+                        elif "lib" in components:
+                            ind = components.index("lib")
+                        elif "mm" in components:
+                            ind = components.index("mm")
+                        elif "crypto" in components:
+                            ind = components.index("crypto")
+                        elif "net" in components:
+                            ind = components.index("net")
+                        elif "security" in components:
+                            ind = components.index("security")
+                        elif "drivers" in components:
+                            ind = components.index("drivers")
+                        elif "arch" in components:
+                            ind = components.index("arch")
+                        elif "block" in components:
+                            ind = components.index("block")
+                        elif "ipc" in components:
+                            ind = components.index("ipc")
                         result = "/".join(components[ind:])
                         result_split = result.split(" ")
                         inter_d2[result_split[0]] = []
@@ -111,8 +159,6 @@ for filename in os.listdir(directory):
                         inter_d2[result_split[0]].append(hashs)
                     else:
                         inter_d2[result_split[0]] = [hashs]
-
-
 #find matching file names between all the patch files and the pop paths data
 matching_keys = {}
 for key in inter_d2.keys():

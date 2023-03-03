@@ -16,6 +16,30 @@ with open(filename) as file:
                 ind = components.index("include")
             elif "mm" in components:
                 ind = components.index("mm")
+            elif "drm" in components:
+                ind = components.index("drm")
+            elif "kernel" in components:
+                ind = components.index("kernel")
+            elif "fs" in components:
+                ind = components.index("fs")
+            elif "sound" in components:
+                ind = components.index("sound")
+            elif "lib" in components:
+                ind = components.index("lib")
+            elif "crypto" in components:
+                ind = components.index("crypto")
+            elif "net" in components:
+                ind = components.index("net")
+            elif "security" in components:
+                ind = components.index("security")
+            elif "drivers" in components:
+                ind = components.index("drivers")
+            elif "arch" in components:
+                ind = components.index("arch")
+            elif "block" in components:
+                ind = components.index("block")
+            elif "ipc" in components:
+                ind = components.index("ipc")
             result = "/".join(components[ind:])
             path_lines[result] = []
         elif stripped_line.isdigit():
