@@ -10,15 +10,6 @@ result = ""
 #with open (r'', 'r') as file2:
     cve_dict = json.load(file2)
 
-#This bottom code should be run to get rid of extra new lines at the end of the patch files
-# for filename in os.listdir(directory):
-#     if filename.endswith('.txt'):
-#         # read the file and split the content into lines
-#         with open(os.path.join(directory, filename), "r+",encoding='utf-8') as f:
-#             lines = f.read().rstrip('\n')
-#             f.writelines(lines)
-#             f.truncate()
-
 #main parser that will grab the file names and the line numbers
 inter_d = {}
 start_count = 0
@@ -29,9 +20,9 @@ for filename in os.listdir(directory):
     if filename.endswith('.txt'):
         with open(directory+filename, encoding='utf-8') as f:
             content = f.read().rstrip('\n')
-            #for line in content.splitlines():
             for i, line in enumerate(content.splitlines()):
                 if(line.startswith("diff ")):
+                    #this if elif chain is to ensure that the correct index of the file name will be found
                     components = line.split("/")
                     if "include" in components:
                         ind = components.index("include")
@@ -65,6 +56,7 @@ for filename in os.listdir(directory):
                     result_split = result.split(" ")
                     name = result_split[0]
                     inter_d[name] = []
+                #if the line starts with @@, break it down to get the the starting line number
                 elif(line.startswith("@@")):
                     num = line.split(" ")
                     line_num = num[1]
@@ -73,6 +65,7 @@ for filename in os.listdir(directory):
                     start_count = abs(int(line_num_split[0]))
                     inter_d[name].append(start_count)
                     prev_plus = False  # reset the flag
+                #if the line starts with a -, increment the line counter since it is an old line
                 elif line.startswith('-	'):
                     prev_plus = False  # reset the flag
                     next_line = content.splitlines()[i+1]
@@ -84,6 +77,7 @@ for filename in os.listdir(directory):
                         inter_d[name].append(start_count)
                     else:
                         inter_d[name] = [start_count]
+                #If just a normal line with no + or -, increment counter since it is an old line
                 elif line.startswith(" 	") or line.startswith("  	"):
                     prev_plus = False  # reset the flag
                     start_count += 1
@@ -91,6 +85,8 @@ for filename in os.listdir(directory):
                         inter_d[name].append(start_count)
                     else:
                         inter_d[name] = [start_count]
+                #If line starts with a + and the prev_plus flag is false, increment and set prev_plus to true.
+                #if following lines also have +, they will be skipped until prev_plus is set false by other lines
                 elif line.startswith("+	"):
                     if prev_plus:  # if previous line also started with +
                         continue
@@ -100,6 +96,7 @@ for filename in os.listdir(directory):
                         inter_d[name].append(start_count)
                     else:
                         inter_d[name] = [start_count]
+                #for blank lines, still increment since it is an old line
                 elif line.strip() == '':
                     prev_plus = False
                     start_count += 1
@@ -107,6 +104,7 @@ for filename in os.listdir(directory):
                         inter_d[name].append(start_count)
                     else:
                         inter_d[name] = [start_count]
+                #do not count the bottom two extra lines that are part of the patch and not actual changes
                 elif line.strip() == "--" or line.strip() == "cgit":
                     break
 
@@ -159,7 +157,7 @@ for filename in os.listdir(directory):
                         inter_d2[result_split[0]].append(hashs)
                     else:
                         inter_d2[result_split[0]] = [hashs]
-#find matching file names between all the patch files and the pop paths data
+#find matching file names between all the patch files and the pop paths data so we do not make the dictionary unnecessary large
 matching_keys = {}
 for key in inter_d2.keys():
     if key in path_lines:
@@ -205,6 +203,7 @@ for key1, value1 in common_dict.items():
         if value1[0] == key2:
             common_dict[key1].append(matching_final[key2])
 
+#dump to json file
 with open("final_dict.json", "w") as f:
     json.dump(common_dict, f)
 
