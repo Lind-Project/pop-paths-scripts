@@ -1,6 +1,6 @@
 import os
 import json
-#add path to the final dictionary
+#add path to the final dictionary on your local machine
 #with open (r'', 'r') as file:
     final_dict  = json.load(file)
 

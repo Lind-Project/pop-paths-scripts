@@ -1,13 +1,13 @@
 import os
 import json
-#add direcotry path that contains all the patch files
+#add direcotry path that contains all the patch files on your local machine
 #directory =r''
 result = ""
-#add path to the pop path lines json
+#add path to the pop path lines json on your local machine
 #with open (r'', 'r') as file:
     path_lines = json.load(file)
     
-#add path to the cve scraped json
+#add path to the cve scraped json on your local machine
 #with open (r'', 'r') as file2:
     cve_dict = json.load(file2)
 
