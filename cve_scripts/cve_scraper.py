@@ -4,14 +4,16 @@ import json, requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
-#uncomment these two lines to insert any kernel version from command line or just change url manually
-#kern = sys.argv[1]
-#url = f"https://www.linuxkernelcves.com/steams/{kern}"
-url = "https://www.linuxkernelcves.com/streams/5.15"
+#Enter any kernel version from command line
+kern = input("Enter kernel version: ")
+url = f"https://www.linuxkernelcves.com/steams/{kern}"
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
-driver = webdriver.Chrome()
+#need to add chromepath to chrome driver on local machine so uncomment the three commented lines and add the file path
+#chrome_path = 
+#service = Service(chrome_path)
+#driver = webdriver.chrome(service = service)
 driver.get(url)
 
 html = driver.page_source
