@@ -3,10 +3,11 @@ import json
 #add direcotry path that contains all the patch files
 #directory =r''
 result = ""
-#add path to the other dictionaries
+#add path to the pop path lines json
 #with open (r'', 'r') as file:
     path_lines = json.load(file)
     
+#add path to the cve scraped json
 #with open (r'', 'r') as file2:
     cve_dict = json.load(file2)
 

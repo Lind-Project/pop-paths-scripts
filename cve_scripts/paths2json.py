@@ -1,8 +1,7 @@
 import sys, getopt, os, json
 
-#this is just a temporary path name, just uncomment the line below to use a command line argument for the pathname or hardcode a pathname to the variable pathname before running
-#pathname = sys.argv[1]
-#pathname =
+#Add the pathname fo the file that contains the pop paths data on your local machine
+#pathname = 
 filename = os.path.basename(pathname)
 
 path_lines = {}
