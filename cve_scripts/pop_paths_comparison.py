@@ -7,9 +7,17 @@ result = ""
 #with open (r'', 'r') as file:
     path_lines = json.load(file)
     
-#add path to the cve scraped json on your local machine
+#add path to the cve scraped json on your local machin
 #with open (r'', 'r') as file2:
     cve_dict = json.load(file2)
+
+#get the filename prefixes to from the pop paths data so it can be used to find all the files that are possible match to the pop paths files
+prefixes = []
+for key in path_lines.keys():
+    split = key.split('/')
+    prefix = split[0]
+    if prefix not in prefixes:
+        prefixes.append(prefix)
 
 #main parser that will grab the file names and the line numbers
 inter_d = {}
@@ -22,51 +30,26 @@ for filename in os.listdir(directory):
         with open(directory+filename, encoding='utf-8') as f:
             content = f.read().rstrip('\n')
             for i, line in enumerate(content.splitlines()):
+                #this if elif chain is to ensure that the correct index of the file name will be found
                 if(line.startswith("diff ")):
-                    #this if elif chain is to ensure that the correct index of the file name will be found
                     components = line.split("/")
-                    if "include" in components:
-                        ind = components.index("include")
-                    elif "drm" in components:
-                        ind = components.index("drm")
-                    elif "kernel" in components:
-                        ind = components.index("kernel")
-                    elif "fs" in components:
-                        ind = components.index("fs")
-                    elif "sound" in components:
-                        ind = components.index("sound")
-                    elif "lib" in components:
-                        ind = components.index("lib")
-                    elif "mm" in components:
-                        ind = components.index("mm")
-                    elif "crypto" in components:
-                        ind = components.index("crypto")
-                    elif "net" in components:
-                        ind = components.index("net")
-                    elif "security" in components:
-                        ind = components.index("security")
-                    elif "drivers" in components:
-                        ind = components.index("drivers")
-                    elif "arch" in components:
-                        ind = components.index("arch")
-                    elif "block" in components:
-                        ind = components.index("block")
-                    elif "ipc" in components:
-                        ind = components.index("ipc")
+                    for prefix in prefixes:
+                        if prefix in components:
+                            ind = components.index(prefix)
+                            break
                     result = "/".join(components[ind:])
                     result_split = result.split(" ")
                     name = result_split[0]
                     inter_d[name] = []
-                #if the line starts with @@, break it down to get the the starting line number
+                #if the line starts with @@, break it down to get the starting line number
                 elif(line.startswith("@@")):
                     num = line.split(" ")
                     line_num = num[1]
                     line_num_split = num[1].split(",")
-                    line_num_split
                     start_count = abs(int(line_num_split[0]))
                     inter_d[name].append(start_count)
                     prev_plus = False  # reset the flag
-                #if the line starts with a -, increment the line counter since it is an old line
+                #If the line starts with a minus, increment the line counter since it is an old line
                 elif line.startswith('-	'):
                     prev_plus = False  # reset the flag
                     next_line = content.splitlines()[i+1]
@@ -87,7 +70,7 @@ for filename in os.listdir(directory):
                     else:
                         inter_d[name] = [start_count]
                 #If line starts with a + and the prev_plus flag is false, increment and set prev_plus to true.
-                #if following lines also have +, they will be skipped until prev_plus is set false by other lines
+                #if following lines also have +, they will be skipped until pre_plus is set false by other lines
                 elif line.startswith("+	"):
                     if prev_plus:  # if previous line also started with +
                         continue
@@ -97,7 +80,7 @@ for filename in os.listdir(directory):
                         inter_d[name].append(start_count)
                     else:
                         inter_d[name] = [start_count]
-                #for blank lines, still increment since it is an old line
+                #for blank lines/new lines, still increment since it is an old line
                 elif line.strip() == '':
                     prev_plus = False
                     start_count += 1
@@ -117,38 +100,15 @@ for filename in os.listdir(directory):
             content = f.read().rstrip('\n')
             for i, line in enumerate(content.splitlines()):
                 if(line.startswith("diff ")):
-                        components = line.split("/")
-                        if "include" in components: 
-                            ind = components.index("include")
-                        elif "drm" in components:
-                            ind = components.index("drm")
-                        elif "kernel" in components:
-                            ind = components.index("kernel")
-                        elif "fs" in components:
-                            ind = components.index("fs")
-                        elif "sound" in components:
-                            ind = components.index("sound")
-                        elif "lib" in components:
-                            ind = components.index("lib")
-                        elif "mm" in components:
-                            ind = components.index("mm")
-                        elif "crypto" in components:
-                            ind = components.index("crypto")
-                        elif "net" in components:
-                            ind = components.index("net")
-                        elif "security" in components:
-                            ind = components.index("security")
-                        elif "drivers" in components:
-                            ind = components.index("drivers")
-                        elif "arch" in components:
-                            ind = components.index("arch")
-                        elif "block" in components:
-                            ind = components.index("block")
-                        elif "ipc" in components:
-                            ind = components.index("ipc")
-                        result = "/".join(components[ind:])
-                        result_split = result.split(" ")
-                        inter_d2[result_split[0]] = []
+                    components = line.split("/")
+                    for prefix in prefixes:
+                        if prefix in components:
+                            ind = components.index(prefix)
+                            break
+                    result = "/".join(components[ind:])
+                    result_split = result.split(" ")
+                    inter_d2[result_split[0]] = []
+                #This is to get the git hashs so this dictionary can be matched with the main dictionary
                 elif (line.startswith("From")):
                     h = line.split(" ")
                     hashs = h[1]
