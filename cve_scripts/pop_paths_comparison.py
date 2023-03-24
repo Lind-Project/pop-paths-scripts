@@ -49,7 +49,7 @@ for filename in os.listdir(directory):
                     start_count = abs(int(line_num_split[0]))
                     inter_d[name].append(start_count)
                     prev_plus = False  # reset the flag
-                #If the line starts with a minus, increment the line counter since it is an old line
+                #If the line starts with a -, increment the line counter since it is an old line
                 elif line.startswith('-	'):
                     prev_plus = False  # reset the flag
                     next_line = content.splitlines()[i+1]
@@ -70,7 +70,7 @@ for filename in os.listdir(directory):
                     else:
                         inter_d[name] = [start_count]
                 #If line starts with a + and the prev_plus flag is false, increment and set prev_plus to true.
-                #if following lines also have +, they will be skipped until pre_plus is set false by other lines
+                #if following lines also have +, they will be skipped until prev_plus is set false by other types of lines
                 elif line.startswith("+	"):
                     if prev_plus:  # if previous line also started with +
                         continue
