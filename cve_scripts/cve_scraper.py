@@ -1,23 +1,24 @@
 import sys, getopt, os
-import wget
+import wget, time, urllib.request
 import json, requests
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
 #Enter any kernel version from command line
-kern = input("Enter kernel version: ")
-url = f"https://www.linuxkernelcves.com/steams/{kern}"
+kern = sys.argv[1]
+url = fr"https://www.linuxkernelcves.com/streams/[kern]"
 
-options = webdriver.ChromeOptions()
+options = Options()
 options.add_argument('--headless')
-#need to add chromepath to chrome driver on local machine so uncomment the three commented lines and add the file path
-#chrome_path = 
-#service = Service(chrome_path)
-#driver = webdriver.chrome(service = service)
+driver = webdriver.Chrome(options=options)
 driver.get(url)
+
+time.sleep(5)
 
 html = driver.page_source
 soup = BeautifulSoup(html, "html.parser")
+
 
 cards = soup.find_all("div", class_="cve-card v-card v-sheet theme--light")
 
@@ -39,9 +40,12 @@ for date, hash_num in d.items():
     cve_date = date
     url2 = f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id={ids}"
     #before running, set dir to the directory path you want to scrape all the diffs into
-    #dir = 
+    dir = sys.argv[2]
     if not os.path.exists(dir):
         os.makedirs(dir)
-    filepath = fr'{dir}\{cve_date}.txt'
-    wget.download(url2, filepath) 
-
+    filename = f'{cve_date}.txt'
+    filepath = os.path.join(dir, filename)
+    wget.download(url2, filepath)
+    with urllib.request.urlopen(url2) as response, open(filepath, 'wb') as out_file:
+        data = response.read()
+        out_file.write(data)
