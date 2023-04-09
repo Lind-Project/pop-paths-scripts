@@ -1,10 +1,11 @@
 #!/bin/bash
 
 ## CONFIG SCRIPT
-# This script takes three command line arguments 
+# This script takes four command line arguments 
 # the first is the directory that we should be running this entire program in (/hdd for example)
 # the second is the link to the kernel that we want to run the pop paths on
-# the third is the path to the Selenium driver
+# the third is the kernel number to scrape CVEs for
+# the fourth is the directory to store the patch files in
 # rerun this script with new arguments to overwrite the current configuration
 
 if [[ $# -eq 4 ]]; then

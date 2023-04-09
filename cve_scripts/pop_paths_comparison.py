@@ -1,14 +1,15 @@
 import os
+import sys
 import json
-#add direcotry path that contains all the patch files on your local machine
-#directory =r''
+
+directory = sys.argv[1] + "/"
 result = ""
-#add path to the pop path lines json on your local machine
-#with open (r'', 'r') as file:
+
+with open (r'./path_lines.json', 'r') as file:
     path_lines = json.load(file)
     
-#add path to the cve scraped json on your local machin
-#with open (r'', 'r') as file2:
+
+with open (r'./cve_dict.json', 'r') as file2:
     cve_dict = json.load(file2)
 
 #get the filename prefixes to from the pop paths data so it can be used to find all the files that are possible match to the pop paths files
