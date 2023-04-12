@@ -1,4 +1,4 @@
-source vars.env
+source pop-paths-scripts/vars.env
 
 # installing LTP
 sudo apt-get install --assume-yes gcc git make pkgconf autoconf automake bison flex m4 linux-headers-$(uname -r) libc6-dev
