@@ -1,14 +1,14 @@
 import os
 import sys
 import json
-
-directory = sys.argv[1] + "/"
+#add direcotry path that contains all the patch files on your local machine
+directory = "./patch_files/"
 result = ""
-
+#add path to the pop path lines json on your local machine
 with open (r'./path_lines.json', 'r') as file:
     path_lines = json.load(file)
     
-
+#add path to the cve scraped json on your local machin
 with open (r'./cve_dict.json', 'r') as file2:
     cve_dict = json.load(file2)
 
@@ -140,7 +140,7 @@ for key1, value1 in cve_dict.items():
 #since not all CVE numbers are needed, just get the ones that match
 common_dict = {}
 for key in matches.keys():
-    if key in cve_dict10:
+    if key in cve_dict:
         matches[key].append(cve_dict[key])
 common_dict = matches
 
@@ -168,4 +168,3 @@ for key1, value1 in common_dict.items():
 #dump to json file
 with open("final_dict.json", "w") as f:
     json.dump(common_dict, f)
-

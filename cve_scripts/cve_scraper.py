@@ -5,8 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
+#Enter any kernel version from command line
 kern = sys.argv[1]
-url = fr"https://www.linuxkernelcves.com/streams/[kern]"
+url = fr"https://www.linuxkernelcves.com/streams/{kern}"
 
 options = Options()
 options.add_argument('--headless')
@@ -38,7 +39,8 @@ for date, hash_num in d.items():
         continue
     cve_date = date
     url2 = f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id={ids}"
-    dir = sys.argv[2]
+    #before running, set dir to the directory path you want to scrape all the diffs into
+    dir = "./patch_files/"
     if not os.path.exists(dir):
         os.makedirs(dir)
     filename = f'{cve_date}.txt'
