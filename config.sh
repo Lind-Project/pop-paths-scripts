@@ -8,7 +8,7 @@
 # the fourth is the directory to store the patch files in
 # rerun this script with new arguments to overwrite the current configuration
 
-if [[ $# -eq 4 ]]; then
+if [[ $# -eq 3 ]]; then
   # Define the filename for the configuration file
   CONFIG_FILE="vars.env"
 
@@ -16,7 +16,6 @@ if [[ $# -eq 4 ]]; then
   echo "export DIRECTORY=$1" >> $CONFIG_FILE
   echo "export KERNEL_LINK=$2" >> $CONFIG_FILE
   echo "export KERNEL_NUMBER=$3" >> $CONFIG_FILE
-  echo "export STORE_PATCH_DIR=$4" >> $CONFIG_FILE
 
   echo "Configuration file created successfully. Use 'source $CONFIG_FILE' to load the variables."
 else
