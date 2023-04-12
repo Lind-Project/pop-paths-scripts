@@ -19,5 +19,5 @@ if [[ $# -eq 3 ]]; then
 
   echo "Configuration file created successfully. Use 'source $CONFIG_FILE' to load the variables."
 else
-  echo "Usage: ./config.sh <directory> <kernel_link> <kernel_number> <store_patch_dir>"
+  echo "Usage: ./config.sh <directory> <kernel_link> <kernel_number>"
 fi
