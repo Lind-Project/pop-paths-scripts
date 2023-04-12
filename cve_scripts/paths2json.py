@@ -28,5 +28,5 @@ with open(filename) as file:
         elif stripped_line.isdigit():
             line_number = int(stripped_line)
             path_lines[result].append(line_number)
-with open("path_lines.json", "w") as f:
+with open("./dictionaries/path_lines.json", "w") as f:
     json.dump(path_lines, f)

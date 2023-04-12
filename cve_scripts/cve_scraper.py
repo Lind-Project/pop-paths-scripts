@@ -30,7 +30,10 @@ for card in cards:
     d[cve_date] = []
     d[cve_date].append(kern_hash)
     d[cve_date].append(blurb)
-with open("cve_dict.json", "w") as f:
+dict_dir = "./dictionaries/"
+if not os.path.exists(dict_dir):
+    os.makedirs(dict_dir)
+with open("./dictionaries/cve_dict.json", "w") as f:
     json.dump(d, f)
 
 for date, hash_num in d.items():
