@@ -2,14 +2,14 @@ import os
 import sys
 import json
 #add direcotry path that contains all the patch files on your local machine
-directory = "./patch_files/"
+directory = "./output/patch_files/"
 result = ""
 #add path to the pop path lines json on your local machine
-with open (r'./dictionaries/path_lines.json', 'r') as file:
+with open (r'./output/dictionaries/path_lines.json', 'r') as file:
     path_lines = json.load(file)
     
 #add path to the cve scraped json on your local machin
-with open (r'./dictionaries/cve_dict.json', 'r') as file2:
+with open (r'./output/dictionaries/cve_dict.json', 'r') as file2:
     cve_dict = json.load(file2)
 
 #get the filename prefixes to from the pop paths data so it can be used to find all the files that are possible match to the pop paths files
@@ -166,5 +166,5 @@ for key1, value1 in common_dict.items():
             common_dict[key1].append(matching_final[key2])
 
 #dump to json file
-with open("./dictionaries/final_dict.json", "w") as f:
+with open("./output/dictionaries/final_dict.json", "w") as f:
     json.dump(common_dict, f)

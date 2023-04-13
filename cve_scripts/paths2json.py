@@ -1,6 +1,6 @@
 import sys, getopt, os, json
 
-pathname = r'/home/jkoe/pop_paths_data.txt'
+pathname = r'${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")'
 filename = os.path.basename(pathname)
 
 
@@ -28,5 +28,5 @@ with open(filename) as file:
         elif stripped_line.isdigit():
             line_number = int(stripped_line)
             path_lines[result].append(line_number)
-with open("./dictionaries/path_lines.json", "w") as f:
+with open("./output/dictionaries/path_lines.json", "w") as f:
     json.dump(path_lines, f)
