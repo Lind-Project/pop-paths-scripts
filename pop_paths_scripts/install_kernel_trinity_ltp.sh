@@ -1,3 +1,5 @@
+source pop-paths-scripts/vars.env
+
 # installing LTP
 sudo apt-get install --assume-yes gcc git make pkgconf autoconf automake bison flex m4 linux-headers-$(uname -r) libc6-dev
 git clone https://github.com/linux-test-project/ltp.git
@@ -19,7 +21,7 @@ cd ..
 
 # downloading the kernel
 # wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/5.11.0-49.55/linux_5.11.0.orig.tar.gz -O kernel.tar.gz
-wget $(cat pop-paths-scripts/kernel_link.txt) -O kernel.tar.gz
+wget ${KERNEL_LINK} -O kernel.tar.gz
 mkdir kernel_out
 
 # un-tarring the kernel

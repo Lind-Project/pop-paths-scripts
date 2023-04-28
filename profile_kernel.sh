@@ -12,9 +12,11 @@
 # to monitor progress, run the following command formatted to your situation
 # sudo screen -r [client_screen  /  server_screen]
 
+source vars.env
+
 # removing the old server file if we find it in the specified directory
 echo "Init Environment..."
-sudo rm -f $(cat directory.txt)/jammy-server-cloudimg-amd64.img  || true
+sudo rm -f ${DIRECTORY}/jammy-server-cloudimg-amd64.img  || true
 echo "Done"
 
 # server
