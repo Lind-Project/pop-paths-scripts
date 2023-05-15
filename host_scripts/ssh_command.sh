@@ -62,5 +62,11 @@ then
 
     # zero-out all of the data in the kernel
     sudo ssh -i ${DIRECTORY}/key -o StrictHostKeyChecking=no -p 2222 ubuntu@localhost "bash ./pop-paths-scripts/pop_paths_scripts/gcov_data_helpers/reset_data.sh"
+
+    # now generate the analyzer file in the folder with the GCOV data
+    python ./pop-paths-scripts/pop_paths_scripts/analyzer.py -i ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/GCOV_DATA/full_data/kernel.info  -o ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/FULL_RUN_COVERAGE.txt
+    python ./pop-paths-scripts/pop_paths_scripts/analyzer.py -i ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/GCOV_DATA/pop_paths/kernel.info  -o ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/POP_PATHS_COVERAGE.txt
+    python ./pop-paths-scripts/pop_paths_scripts/analyzer.py -i ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/GCOV_DATA/blank_reset/kernel.info  -o ${DIRECTORY}/GCOV_DATA/$(date --iso-8601="minutes")/BLANK_RESET_COVERATE.txt
+    
 fi
 
